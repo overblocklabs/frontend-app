@@ -5,3 +5,7 @@ interface AuthProps {
 interface SchemaProps {
     message: string
 }
+
+interface ApiErrorProps {
+    message: string
+}

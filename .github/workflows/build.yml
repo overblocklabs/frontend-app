@@ -46,4 +46,21 @@ jobs:
           SUPABASE_PROJECT_URL: "https://asdda.supabase.co"
           SUPABASE_DB_SECRET: "asdf"
           SUPABASE_ANON_KEY: "asadsdf"
+          NEXT_PUBLIC_STELLAR_NETWORK: "testnet"
+          NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_SOROBAN_RPC_URL: "https://soroban-testnet.stellar.org:443"
+          NEXT_PUBLIC_HORIZON_URL: "https://horizon-testnet.stellar.org"
+          NEXT_PUBLIC_LOTTERY_CONTRACT_ID: ""
+          NEXT_PUBLIC_NATIVE_TOKEN_ADDRESS: ""
+          NEXT_PUBLIC_PLATFORM_ADDRESS: ""
+          NEXT_PUBLIC_PLATFORM_FEE_PERCENTAGE: 10
+          NEXT_PUBLIC_APP_NAME: "Lotellar DApp"
+          NEXT_PUBLIC_APP_VERSION: "1.0.0"
+          NEXT_PUBLIC_DEFAULT_LOTTERY_DURATION: 3600
+          NEXT_PUBLIC_MIN_PARTICIPANTS: 2
+          NEXT_PUBLIC_MAX_PARTICIPANTS: 100
+          NEXT_PUBLIC_DEBUG_MODE: true
+          NEXT_PUBLIC_ENABLE_CONSOLE_LOGS: true
+          NEXT_PUBLIC_ALICE_ADDRESS: GAUVJS22CRSAJMBMXQO42JRGNITJVGA2IHR5OUV6UKHYQYQ5YIZEBTIB
+          
         run: pnpm build
