@@ -23,36 +23,34 @@ export default function Client() {
     const balance = useRef<string | undefined>(undefined)
     const signers = useRef<Signer[]>([])
 
-
     const handleLogin = async () => {
         try {
             const accessObj = await requestAccess();
-            console.log(accessObj.address)
+            await fetch(`/api/user/sign-up`, { method: 'POST', body: JSON.stringify({ publicKey: contractId.current }), headers: { 'content-type': 'application/json' } })
+            setPublicKey(accessObj.address)
+            toast.success('Hi, Welcome back! 🎉🚀')
         } catch (e) {
-            console.log(e)
+            console.error(e)
+            return toast.error('An unexcepted error occurred please try again.')
         }
     }
 
     const handleConnection = async () => {
-        try {
-            const response = await fetch(`/api/user/${contractId.current}`, { method: 'GET', headers: { 'content-type': 'application/json' } })
-            const json = await response.json()
-            if (response.status === 404) {
-                handleLogin()
-                return toast('Please connect your wallet before join the lotteries.')
-            }
-
-            if (response.status !== 200) {
-                return toast.error('An unexcepted error occurred please try again.')
-            }
-
-            const data = json as AuthProps
-            setPublicKey(data.publicKey)
-            toast.success('Hi, Welcome back! 🎉🚀')
-
-        } catch (e) {
-            console.log(e)
+        const response = await fetch(`/api/user/${contractId.current}`, { method: 'GET', headers: { 'content-type': 'application/json' } })
+        if (response.status === 404) {
+            handleLogin()
+            return
         }
+        
+        if (response.status !== 200) {
+            return toast.error('An unexcepted error occurred please try again.')
+        }
+        
+        const json = await response.json()
+        const data = json as AuthProps
+        setPublicKey(data.publicKey)
+        toast.success('Hi, Welcome back! 🎉🚀')
+
     }
 
     const getWalletBalance = async () => {
@@ -142,7 +140,7 @@ export default function Client() {
 
     }
 
-    const reset = () => {
+    const handleLogout = () => {
         localStorage.removeItem("sp:keyId");
         location.reload();
     }
@@ -159,15 +157,15 @@ export default function Client() {
     if (!publicKey || !hasPermission) {
         return <div>
             <p>Welcome!, Please connect your wallet first.</p>
-            <button onClick={handleLogin}>connect</button>
+            <button onClick={() => connect()}>Sign In</button>
         </div>
     }
 
     return <div>
+        {publicKey}
         <Toaster />
         <button onClick={handleRegister}>register</button>
-        <button onClick={() => connect()}>Sign In</button>
-        <button onClick={reset}>reset</button>
+        <button onClick={handleLogout}>logout</button>
         {isConnected && <>
             <button onClick={fundWallet}>Add Funds</button>
             <button onClick={getWalletBalance}>Get Balance</button>
