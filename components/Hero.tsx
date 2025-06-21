@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Tilt } from 'react-tilt'
+import Image from 'next/image'
 
 export default function Hero() {
   const scrollToActiveLotteries = () => {
@@ -95,6 +96,13 @@ export default function Hero() {
               <div className="text-3xl font-bold gradient-text mb-2">100%</div>
               <div className="text-sm text-muted">Transparent</div>
             </div>
+          </div>
+
+          <div className='flex flex-wrap gap-5 items-center justify-evenly w-full gap-5 mt-[70px]'>
+            <Image src={'/images/stellar-logo.svg'} width={150} height={150} alt='stellar logo' />
+            <Image src={'/images/scf-logo.svg'} width={40} height={40} alt='scf logo' />
+            <Image src={'/images/stellar-network.svg'} width={150} height={150} alt='stellar logo' />
+            <Image src={'/images/soroban.svg'} width={150} height={150} alt='stellar logo' />
           </div>
         </div>
       </div>
