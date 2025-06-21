@@ -42,6 +42,7 @@ const usePasskey = () => {
     if (!user) return;
 
     try {
+      setPasskeyLoading(true)
       const {
         keyId: kid,
         contractId: cid,

@@ -5,14 +5,14 @@ import toast from "react-hot-toast";
 import usePasskey from "../hooks/passkey.hook";
 import useWallet from "../hooks/useWallet.hook";
 
-export default function WalletConnection({ onConnect }: { onConnect?: (publicKey: string) => void }) {
+export default function WalletConnection({ onConnect, onStart, onError }: { onConnect?: (publicKey: string) => void, onStart?: () => void, onError?: () => void }) {
   // const [publicKey, setPublicKey] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const { publicKey, handleLogin } = useWallet()
-  const { handleLogout, handleRegister, connect, contractId } = usePasskey()
+  const { publicKey, handleLogin, isWalletLoading, isWalletError } = useWallet()
+  const { handleLogout, handleRegister, connect, contractId, isPassKeyLoading, isPassKeyError } = usePasskey()
 
 
   useEffect(() => {
@@ -23,11 +23,23 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
   }, [contractId])
 
   useEffect(() => {
-    if(!publicKey){
+    if (!publicKey) {
       return
     }
     onConnect?.(publicKey)
   }, [publicKey])
+
+  useEffect(() => {
+    if(isPassKeyLoading || isWalletLoading){
+      onStart?.()
+    }
+  }, [isPassKeyLoading, isWalletLoading])
+
+  useEffect(() => {
+    if(isWalletError || isPassKeyError){
+      onError?.()
+    }
+  }, [isPassKeyError, isWalletError])
 
   // Handle click outside to close menu
   useEffect(() => {
@@ -96,43 +108,37 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
     setIsMenuOpen(!isMenuOpen);
   };
 
-  if (!publicKey) {
-    return (
-      <div className="flex flex-wrap gap-2 items-center">
-        <button
-          ref={buttonRef}
-          onClick={() => connect()}
-          // disabled={isLoading}
-          className="bg-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
-          data-wallet-connect
-          // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
-          aria-describedby="wallet-connect-description"
-        >
-          Sign in
-          {/* {isLoading ? (
+  return <>
+    {!publicKey ? <div className="flex flex-wrap gap-2 items-center">
+      <button
+        ref={buttonRef}
+        onClick={() => connect()}
+        // disabled={isLoading}
+        className="bg-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
+        data-wallet-connect
+        // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
+        aria-describedby="wallet-connect-description"
+      >
+        Sign in
+        {/* {isLoading ? (
             <div className="flex items-center">
               <LoadingSpinner size="sm" className="mr-2" />
               <span>Please wait...</span>
             </div>
           ) : "Sign in"} */}
-        </button>
-        <button
-          ref={buttonRef}
-          onClick={handleRegister}
-          // disabled={isLoading}
-          className="bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
-          data-wallet-connect
-          // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
-          aria-describedby="wallet-connect-description"
-        >
-          {"Sign Up"}
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <div className="relative" ref={menuRef}>
+      </button>
+      <button
+        ref={buttonRef}
+        onClick={handleRegister}
+        // disabled={isLoading}
+        className="bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
+        data-wallet-connect
+        // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
+        aria-describedby="wallet-connect-description"
+      >
+        {"Sign Up"}
+      </button>
+    </div> : <div className="relative" ref={menuRef}>
       <button
         ref={buttonRef}
         onClick={handleMenuToggle}
@@ -237,6 +243,10 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
       <div id="wallet-connect-description" className="sr-only">
         Connect your Freighter wallet to interact with Stellar blockchain lotteries
       </div>
-    </div>
-  );
+    </div>}
+  </>
+
+
+
+
 } 

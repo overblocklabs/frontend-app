@@ -6,10 +6,12 @@ import Link from 'next/link';
 
 interface HeaderProps {
   onConnect: (publicKey: string) => void;
+  onStart?: () => void;
+  onError?: () => void;
   publicKey: string | null;
 }
 
-export default function Header({ onConnect, publicKey }: HeaderProps) {
+export default function Header({ onConnect, publicKey, onStart, onError }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
@@ -145,7 +147,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
             </div>
           )}
           <div className="scale-110">
-            <WalletConnection onConnect={onConnect} />
+            <WalletConnection onError={onError} onStart={onStart} onConnect={onConnect} />
           </div>
         </div>
       </div>
@@ -200,7 +202,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
                   <span className="text-xs text-muted font-medium">Wallet Connected</span>
                 </div>
               )}
-              <WalletConnection onConnect={onConnect} />
+              <WalletConnection onError={onError} onStart={onStart} onConnect={onConnect} />
             </div>
           </div>
         </nav>
