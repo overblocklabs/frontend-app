@@ -101,7 +101,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
           </Link>
           <Link 
-            href="#contract-manager" 
+            href="#community-lotteries-gallery" 
             className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
           >
             Community Lotteries
@@ -182,7 +182,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
               Create Lottery
             </Link>
             <Link 
-              href="#contract-manager" 
+              href="#community-lotteries-gallery" 
               className="block text-base font-medium text-white hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-2"
               onClick={() => setMobileMenuOpen(false)}
             >

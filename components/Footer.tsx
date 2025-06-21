@@ -29,7 +29,7 @@ export default function Footer() {
              
             </div>
             <div>
-              <h3 className="text-2xl font-bold tracking-tight gradient-text-red">Lotellar</h3>
+              <h3 className="text-2xl font-bold tracking-tight text-primary">Lotellar</h3>
               <p className="text-sm text-muted">Running on the Stellar Testnet</p>
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function Footer() {
               Create Lottery
             </Link>
             <Link 
-              href="#contract-manager" 
+              href="#community-lotteries-gallery" 
               className="text-sm text-muted hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
             >
               Community Lotteries
@@ -103,7 +103,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Lotellar. All rights reserved.
           </p>
           <p className="text-xs text-muted mt-2">
-            Built with accessibility in mind. Powered by Stellar blockchain.
+            Built with ❤️ from overblocklabs
           </p>
         </div>
       </div>

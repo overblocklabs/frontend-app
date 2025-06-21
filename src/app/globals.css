@@ -63,6 +63,10 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+html {
+  scroll-behavior: smooth;
+}
   
 body {
   background-color: var(--background);

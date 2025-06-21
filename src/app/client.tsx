@@ -424,7 +424,7 @@ export default function Client() {
       <section id="community-lotteries-gallery" className="py-20 bg-gradient-to-br from-brand-red/5 via-background/95 to-brand-red-light/5">
         <div className="container">
           <div className="text-center mb-16 animate-slideInRight">
-            <h2 className="section-title gradient-text-red">🌟 Community Lotteries</h2>
+            <h2 className="section-title text-primary">🌟 Community Lotteries</h2>
             <p className="text-muted max-w-2xl mx-auto text-lg">
               Exclusive lotteries with special requirements and enhanced prizes. Join our community challenges and win big!
             </p>
@@ -432,8 +432,8 @@ export default function Client() {
 
           {communityLotteries.filter(lottery => !lottery.isCompleted).length === 0 ? (
             <div className="text-center py-20">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full gradient-bg-red-subtle flex items-center justify-center">
-                <svg className="w-10 h-10 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent flex items-center justify-center">
+                <svg className="w-10 h-10 text-brand-red" fill="none" stroke="red" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               </div>
@@ -566,7 +566,7 @@ export default function Client() {
             <div className="card p-8 text-center">
               <div className="flex justify-center mb-6">
                 <div className="w-16 h-16 rounded-full gradient-bg-red-subtle flex items-center justify-center">
-                  <svg className="w-8 h-8 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-brand-red" fill="none" stroke="#00D2FF" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                   </svg>
                 </div>
@@ -579,7 +579,7 @@ export default function Client() {
               
               <button 
                 onClick={() => setShowCommunityForm(true)}
-                className="gradient-bg-red text-white font-semibold px-8 py-4 text-lg rounded-lg hover:scale-105 transition-all duration-300 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 focus:ring-offset-card-bg"
+                className="bg-primary text-white font-semibold px-8 py-4 text-lg rounded-lg hover:scale-105 transition-all duration-300 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 focus:ring-offset-card-bg"
               >
                 <svg className="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
