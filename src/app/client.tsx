@@ -13,6 +13,7 @@ import { LotteryCardSkeleton, WinnerCardSkeleton, LoadingSection } from '../../c
 import CommunityLotteryForm, { CommunityLotteryData } from '../../components/CommunityLotteryForm';
 import CommunityLotteryCard, { CommunityLotteryType } from '../../components/CommunityLotteryCard';
 import toast, { Toaster } from 'react-hot-toast';
+import { Tilt } from 'react-tilt';
 
 export default function Client() {
   const [userPublicKey, setUserPublicKey] = useState<string | null>(null);
@@ -306,12 +307,13 @@ export default function Client() {
               {lotteries
                 .filter(lottery => !lottery.isCompleted && !lottery.isCommunityLottery)
                 .map((lottery) => (
-                  <LotteryCard
-                    key={lottery.id}
-                    lottery={lottery}
-                    userPublicKey={userPublicKey}
-                    onEnter={handleEnterLottery}
-                  />
+                  <Tilt key={lottery.id}>
+                    <LotteryCard
+                      lottery={lottery}
+                      userPublicKey={userPublicKey}
+                      onEnter={handleEnterLottery}
+                    />
+                  </Tilt>
                 ))}
             </div>
           )}
@@ -350,7 +352,8 @@ export default function Client() {
                 .slice()
                 .reverse() // Show most recent winners first
                 .map((lottery) => (
-                  <div key={lottery.id} className="card p-6 bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
+                  <Tilt key={lottery.id}>
+                  <div className="card p-6 bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
                     <div className="text-center">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/20 flex items-center justify-center">
                         <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,6 +417,7 @@ export default function Client() {
                       </div>
                     </div>
                   </div>
+                  </Tilt>
                 ))}
             </div>
           )}
@@ -451,12 +455,13 @@ export default function Client() {
               {communityLotteries
                 .filter(lottery => !lottery.isCompleted)
                 .map((lottery) => (
-                  <CommunityLotteryCard
-                    key={lottery.id}
-                    lottery={lottery}
-                    userPublicKey={userPublicKey}
-                    onEnter={handleEnterCommunityLottery}
-                  />
+                  <Tilt key={lottery.id}>
+                    <CommunityLotteryCard
+                      lottery={lottery}
+                      userPublicKey={userPublicKey}
+                      onEnter={handleEnterCommunityLottery}
+                    />
+                  </Tilt>
                 ))}
             </div>
           )}

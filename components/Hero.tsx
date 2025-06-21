@@ -1,12 +1,13 @@
 "use client";
 
 import React from 'react';
+import { Tilt } from 'react-tilt'
 
 export default function Hero() {
   const scrollToActiveLotteries = () => {
     const activeLotteriesSection = document.getElementById('active-lotteries');
     if (activeLotteriesSection) {
-      activeLotteriesSection.scrollIntoView({ 
+      activeLotteriesSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -16,7 +17,7 @@ export default function Hero() {
   const scrollToCreateLottery = () => {
     const createLotterySection = document.getElementById('create-lottery');
     if (createLotterySection) {
-      createLotterySection.scrollIntoView({ 
+      createLotterySection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -37,20 +38,20 @@ export default function Hero() {
           {/* Logo */}
           <div className="mb-8  flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 animate-float">
-              <img 
-                src="/images/lotellar-logo.png" 
+              <img
+                src="/images/lotellar-logo.png"
                 alt="Lotellar - Decentralized Lottery Platform"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
             </div>
           </div>
-          
+
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-primary">
             <span>Decentralized</span>{' '}
             <span>Lottery Platform</span>
           </h1>
-          
+
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted mb-12 max-w-2xl mx-auto leading-relaxed">
             Join ongoing lotteries and compete for amazing prizes. All results are transparent and verifiable on the blockchain.
@@ -58,18 +59,22 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button 
-              onClick={scrollToActiveLotteries}
-              className="bg-primary text-white font-semibold px-8 py-4 text-lg rounded-sm hover:scale-105 transition-transform duration-300 hover:shadow-lg"
-            >
-              Explore Lotteries
-            </button>
-            <button 
+            <Tilt>
+              <button
+                onClick={scrollToActiveLotteries}
+                className="bg-primary text-white font-semibold px-8 py-4 text-lg rounded-sm hover:scale-105 transition-transform duration-300 hover:shadow-lg"
+              >
+                Explore Lotteries
+              </button>
+            </Tilt>
+            <Tilt>
+            <button
               onClick={scrollToCreateLottery}
               className="btn btn-outline px-8 py-4 text-lg hover:scale-105  rounded-sm transition-transform duration-300 border-brand-red text-brand-red hover:bg-brand-red hover:text-white"
             >
               Create Lottery
             </button>
+            </Tilt>
           </div>
 
           {/* Stats Grid */}
