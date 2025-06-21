@@ -43,7 +43,7 @@ jobs:
           NEXT_PUBLIC_mercuryUrl: "https://api.mercurydata.app"
           NEXT_PUBLIC_mercuryJwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ29vZ2xlb2F1dGgyMTE3ODQ3NTgyODk0MzAwMjU4Mjc3IiwiZXhwIjoxNzUzMDk0NTk2LCJ1c2VyX2lkIjoyMjAsInVzZXJuYW1lIjoiYWtma2FyYTk3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDUwMjU5NSwiYXVkIjoicG9zdGdyYXBoaWxlIiwiaXNzIjoicG9zdGdyYXBoaWxlIn0.Cd4rI6KKZ9io15Vtucnzrm87J_hA4swnuS3YGm_CJws"
           SUPABASE_DB_SERCET: ""
-          SUPABASE_PROJECT_URL: "asd"
+          SUPABASE_PROJECT_URL: "https://asdda.supabase.co"
           SUPABASE_DB_SECRET: "asdf"
           SUPABASE_ANON_KEY: "asadsdf"
         run: pnpm build
