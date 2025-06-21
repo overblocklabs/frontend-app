@@ -4,6 +4,10 @@ import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 const usePasskey = () => {
+
+  const [isPassKeyLoading, setPasskeyLoading] = useState(false)
+  const [isPassKeyError, setIsPassKeyError] = useState(false)
+
   const [contractId, setContractId] = useState<string>("");
   const contractIdRef = useRef<string>("");
 
@@ -11,6 +15,7 @@ const usePasskey = () => {
 
   const connect = async (keyId_?: string) => {
     try {
+      setPasskeyLoading(true)
       const { keyId: kid, contractId: cid } = await account.connectWallet({
         keyId: keyId_,
         getContractId: (keyId) => server.getContractId({ keyId }),
@@ -25,7 +30,10 @@ const usePasskey = () => {
     } catch (err) {
       console.error(err);
       toast.error("Couldn't connect your wallet please try again.");
+      setIsPassKeyError(true)
       // alert(err.message)
+    }finally {
+      setPasskeyLoading(false)
     }
   };
 
@@ -47,7 +55,10 @@ const usePasskey = () => {
       contractIdRef.current = cid;
       setContractId(cid);
     } catch (err) {
+      setIsPassKeyError(true)
       console.error(err);
+    }finally {
+      setPasskeyLoading(false)
     }
   };
 
@@ -61,6 +72,8 @@ const usePasskey = () => {
     handleLogout,
     connect,
     contractId,
+    isPassKeyLoading,
+    isPassKeyError
   };
 };
 
