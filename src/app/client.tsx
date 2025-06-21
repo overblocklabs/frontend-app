@@ -1,174 +1,35 @@
 "use client"
-import base64url from "base64url";
-import {
-    account,
-    fundPubkey,
-    fundSigner,
-    native,
-    server,
-} from "./lib/common";
-import { type Signer } from "passkey-kit";
-import { useEffect, useRef, useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
-import { isAllowed, requestAccess } from "@stellar/freighter-api";
+import { useEffect } from "react";
+import useWallet from "../../hooks/useWallet.hook";
+import usePasskey from "../../hooks/passkey.hook";
 
 export default function Client() {
 
-    const [isConnected, setIsConnected] = useState<boolean>(false)
-    const [hasPermission, setHasPermission] = useState(false)
-    const [publicKey, setPublicKey] = useState<string>()
+    const { hasPermission, publicKey, handleAllowApp, handleLogin} = useWallet()
+    const { handleLogout, handleRegister, connect, contractId } = usePasskey()
 
-    const contractId = useRef<string>('')
-    const keyId = useRef<string>('')
-    const balance = useRef<string | undefined>(undefined)
-    const signers = useRef<Signer[]>([])
-
-    const handleLogin = async () => {
-        try {
-            const accessObj = await requestAccess();
-            await fetch(`/api/user/sign-up`, { method: 'POST', body: JSON.stringify({ publicKey: contractId.current }), headers: { 'content-type': 'application/json' } })
-            setPublicKey(accessObj.address)
-            toast.success('Hi, Welcome back! 🎉🚀')
-        } catch (e) {
-            console.error(e)
-            return toast.error('An unexcepted error occurred please try again.')
-        }
-    }
-
-    const handleConnection = async () => {
-        const response = await fetch(`/api/user/${contractId.current}`, { method: 'GET', headers: { 'content-type': 'application/json' } })
-        if (response.status === 404) {
-            handleLogin()
+    useEffect(() => {
+        if(!contractId){
             return
         }
-        
-        if (response.status !== 200) {
-            return toast.error('An unexcepted error occurred please try again.')
-        }
-        
-        const json = await response.json()
-        const data = json as AuthProps
-        setPublicKey(data.publicKey)
-        toast.success('Hi, Welcome back! 🎉🚀')
-
-    }
-
-    const getWalletBalance = async () => {
-        const { result } = await native.balance({ id: contractId.current });
-
-        balance.current = result.toString();
-        console.log(balance);
-    }
-
-    const getWalletSigners = async () => {
-        signers.current = await server.getSigners(contractId.current);
-    }
-
-    const fundWallet = async () => {
-        const { built, ...transfer } = await native.transfer({
-            to: contractId.current,
-            from: fundPubkey,
-            amount: BigInt(100 * 10_000_000),
-        });
-
-        await transfer.signAuthEntries({
-            address: fundPubkey,
-            signAuthEntry: fundSigner.signAuthEntry,
-        });
-
-        const res = await server.send(built!);
-
-        console.log(res);
-
-        await getWalletBalance();
-    }
-
-    const connect = async (keyId_?: string) => {
-        try {
-            const { keyId: kid, contractId: cid } = await account.connectWallet(
-                {
-                    keyId: keyId_,
-                    getContractId: (keyId) => server.getContractId({ keyId }),
-                },
-            );
-
-            keyId.current = base64url(kid);
-            localStorage.setItem("sp:keyId", keyId.current);
-
-            contractId.current = cid
-            handleConnection()
-
-            setIsConnected(true)
-
-            await getWalletBalance();
-            await getWalletSigners();
-        } catch (err) {
-            console.error(err);
-            // alert(err.message)
-        }
-    }
-
-    const handleRegister = async () => {
-        const user = prompt("Give this passkey a name");
-        if (!user) return;
-
-        try {
-            const {
-                keyId: kid,
-                contractId: cid,
-                signedTx,
-            } = await account.createWallet("Super Peach", user);
-
-            const res = await server.send(signedTx);
-
-            console.log(res);
-
-            keyId.current = base64url(kid);
-            localStorage.setItem("sp:keyId", keyId.current);
-            contractId.current = cid
-            console.log("register", cid);
-            handleConnection()
-
-            setIsConnected(true)
-
-            await getWalletSigners();
-            await fundWallet();
-
-        } catch (err) {
-            console.error(err);
-        }
-
-    }
-
-    const handleLogout = () => {
-        localStorage.removeItem("sp:keyId");
-        location.reload();
-    }
-
-    const handleAllowApp = async () => {
-        const isAppAllowed = await isAllowed();
-        setHasPermission(isAppAllowed.isAllowed)
-    }
+        handleLogin(contractId)
+    }, [contractId])
 
     useEffect(() => {
         handleAllowApp()
     }, [])
 
+
     if (!publicKey || !hasPermission) {
         return <div>
             <p>Welcome!, Please connect your wallet first.</p>
             <button onClick={() => connect()}>Sign In</button>
+            <button onClick={() => handleRegister()}>Sign Up</button>
         </div>
     }
 
     return <div>
         {publicKey}
-        <Toaster />
-        <button onClick={handleRegister}>register</button>
         <button onClick={handleLogout}>logout</button>
-        {isConnected && <>
-            <button onClick={fundWallet}>Add Funds</button>
-            <button onClick={getWalletBalance}>Get Balance</button>
-        </>}
     </div>
 }

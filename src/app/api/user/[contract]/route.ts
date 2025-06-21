@@ -1,4 +1,4 @@
-import db from "@/app/lib/db";
+import db from "../../../../../lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_: NextRequest, { params }: { params: Promise<{ contract: string }> }) {
@@ -6,8 +6,8 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ contra
 
   const { data, error } = await db
   .from('public_wallet_key')
-  .select('public_key')
-  .eq('public_key', contract)
+  .select('public_key, contract')
+  .eq('contract', contract)
   
   if(error){
     return NextResponse.json({message: 'An unexcepted error occured please try again'}, {status: 500})
