@@ -21,3 +21,4 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ contra
   return NextResponse.json({publicKey: data[0].public_key}, {status: 200})
 }
  
+

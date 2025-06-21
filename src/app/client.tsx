@@ -10,37 +10,47 @@ import {
 import { type Signer } from "passkey-kit";
 import { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
+import { isAllowed, requestAccess } from "@stellar/freighter-api";
 
 export default function Client() {
+
     const [isConnected, setIsConnected] = useState<boolean>(false)
+    const [hasPermission, setHasPermission] = useState(false)
+    const [publicKey, setPublicKey] = useState<string>()
 
     const contractId = useRef<string>('')
     const keyId = useRef<string>('')
-    const balance = useRef<string|undefined>(undefined)
+    const balance = useRef<string | undefined>(undefined)
     const signers = useRef<Signer[]>([])
-    const publicKey = useRef<string>('')
 
-    useEffect(() => {
-        handleConnection()
-    }, [])
+
+    const handleLogin = async () => {
+        try {
+            const accessObj = await requestAccess();
+            console.log(accessObj.address)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const handleConnection = async () => {
         try {
-            const response = await fetch(`/api/user/kjjk`, {method: 'GET', headers: {'content-type': 'application/json'}})
+            const response = await fetch(`/api/user/${contractId.current}`, { method: 'GET', headers: { 'content-type': 'application/json' } })
             const json = await response.json()
-            if(response.status === 404){
+            if (response.status === 404) {
+                handleLogin()
                 return toast('Please connect your wallet before join the lotteries.')
             }
 
-            if(response.status !== 200){
+            if (response.status !== 200) {
                 return toast.error('An unexcepted error occurred please try again.')
             }
 
             const data = json as AuthProps
-            publicKey.current = data.publicKey
+            setPublicKey(data.publicKey)
             toast.success('Hi, Welcome back! 🎉🚀')
-            
-        }catch(e){
+
+        } catch (e) {
             console.log(e)
         }
     }
@@ -83,7 +93,7 @@ export default function Client() {
                     getContractId: (keyId) => server.getContractId({ keyId }),
                 },
             );
-            
+
             keyId.current = base64url(kid);
             localStorage.setItem("sp:keyId", keyId.current);
 
@@ -135,6 +145,22 @@ export default function Client() {
     const reset = () => {
         localStorage.removeItem("sp:keyId");
         location.reload();
+    }
+
+    const handleAllowApp = async () => {
+        const isAppAllowed = await isAllowed();
+        setHasPermission(isAppAllowed.isAllowed)
+    }
+
+    useEffect(() => {
+        handleAllowApp()
+    }, [])
+
+    if (!publicKey || !hasPermission) {
+        return <div>
+            <p>Welcome!, Please connect your wallet first.</p>
+            <button onClick={handleLogin}>connect</button>
+        </div>
     }
 
     return <div>
