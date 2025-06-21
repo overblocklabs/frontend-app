@@ -8,7 +8,8 @@ import {
     server,
 } from "./lib/common";
 import { type Signer } from "passkey-kit";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Client() {
     const [isConnected, setIsConnected] = useState<boolean>(false)
@@ -17,9 +18,34 @@ export default function Client() {
     const keyId = useRef<string>('')
     const balance = useRef<string|undefined>(undefined)
     const signers = useRef<Signer[]>([])
+    const publicKey = useRef<string>('')
+
+    useEffect(() => {
+        handleConnection()
+    }, [])
+
+    const handleConnection = async () => {
+        try {
+            const response = await fetch(`/api/user/kjjk`, {method: 'GET', headers: {'content-type': 'application/json'}})
+            const json = await response.json()
+            if(response.status === 404){
+                return toast('Please connect your wallet before join the lotteries.')
+            }
+
+            if(response.status !== 200){
+                return toast.error('An unexcepted error occurred please try again.')
+            }
+
+            const data = json as AuthProps
+            publicKey.current = data.publicKey
+            toast.success('Hi, Welcome back! 🎉🚀')
+            
+        }catch(e){
+            console.log(e)
+        }
+    }
 
     const getWalletBalance = async () => {
-        console.log(contractId.current)
         const { result } = await native.balance({ id: contractId.current });
 
         balance.current = result.toString();
@@ -62,7 +88,7 @@ export default function Client() {
             localStorage.setItem("sp:keyId", keyId.current);
 
             contractId.current = cid
-            console.log("connect", cid);
+            handleConnection()
 
             setIsConnected(true)
 
@@ -93,6 +119,7 @@ export default function Client() {
             localStorage.setItem("sp:keyId", keyId.current);
             contractId.current = cid
             console.log("register", cid);
+            handleConnection()
 
             setIsConnected(true)
 
@@ -111,6 +138,7 @@ export default function Client() {
     }
 
     return <div>
+        <Toaster />
         <button onClick={handleRegister}>register</button>
         <button onClick={() => connect()}>Sign In</button>
         <button onClick={reset}>reset</button>

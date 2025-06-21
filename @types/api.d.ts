@@ -1,0 +1,3 @@
+interface AuthProps {
+    publicKey: string
+}

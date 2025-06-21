@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "@stellar/stellar-sdk": "^13.3.0",
+    "@supabase/supabase-js": "^2.50.0",
     "base64url": "^3.0.1",
     "buffer": "^6.0.3",
     "next": "15.3.4",
     "passkey-kit": "^0.10.24",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
