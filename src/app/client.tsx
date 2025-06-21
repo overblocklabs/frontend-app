@@ -5,7 +5,7 @@ import usePasskey from "../../hooks/passkey.hook";
 
 export default function Client() {
 
-    const { hasPermission, publicKey, handleAllowApp, handleLogin} = useWallet()
+    const { hasPermission, publicKey, handleAllowApp, handleLogin } = useWallet()
     const { handleLogout, handleRegister, connect, contractId } = usePasskey()
 
     useEffect(() => {
