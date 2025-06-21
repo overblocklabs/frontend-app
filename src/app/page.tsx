@@ -1,7 +1,7 @@
+import Client from "./client";
+
 export default function Home() {
   return (
-    <div>
-      asdf
-    </div>
+    <Client />
   );
 }
