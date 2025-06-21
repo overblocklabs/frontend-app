@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { LoadingSpinner } from './LoadingSkeleton';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 interface CommunityLotteryFormProps {
   userPublicKey: string | null;
@@ -40,6 +41,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
   const [duration, setDuration] = useState(7); // days
   const [maxParticipants, setMaxParticipants] = useState(10);
   const [winnerCount, setWinnerCount] = useState(1);
+  const router = useRouter()
 
   // Requirements
   const [twitterFollow, setTwitterFollow] = useState(false);
@@ -161,6 +163,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
       setFormStep(0);
       setErrors({});
       onClose();
+      router.push('#community-lotteries-gallery')
       toast.success('Community lottery created successfully!');
     } catch (err) {
       const errorMsg = `Failed to create lottery: ${(err as ApiErrorProps).message || 'Unknown error'}`;
@@ -196,7 +199,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
         aria-modal="true"
       >
         <div className="flex justify-between items-center mb-8">
-          <h3 id="community-form-title" className="text-2xl font-bold gradient-text-red">
+          <h3 id="community-form-title" className="text-2xl font-bold text-primary">
             Create Community Lottery
           </h3>
           <button
@@ -212,10 +215,10 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
 
         {/* Step indicator */}
         <nav aria-label="Form progress" className="flex justify-between mb-8">
-          <div className={`flex flex-col items-center ${formStep >= 0 ? 'text-brand-red' : 'text-muted'}`}>
+          <div className={`flex flex-col items-center ${formStep >= 0 ? 'text-accent' : 'text-muted'}`}>
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                formStep >= 0 ? 'bg-brand-red text-white' : 'bg-card-bg border border-border text-muted'
+                formStep >= 0 ? 'bg-primary text-white' : 'bg-card-bg border border-border text-muted'
               }`}
             >
               1
@@ -223,10 +226,10 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
             <span className="text-sm">Details</span>
           </div>
           <div className="grow border-t border-border self-center mx-3" aria-hidden="true"></div>
-          <div className={`flex flex-col items-center ${formStep >= 1 ? 'text-brand-red' : 'text-muted'}`}>
+          <div className={`flex flex-col items-center ${formStep >= 1 ? 'text-accent' : 'text-muted'}`}>
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                formStep >= 1 ? 'bg-brand-red text-white' : 'bg-card-bg border border-border text-muted'
+                formStep >= 1 ? 'bg-primary text-white' : 'bg-card-bg border border-border text-muted'
               }`}
             >
               2
@@ -234,10 +237,10 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
             <span className="text-sm">Settings</span>
           </div>
           <div className="grow border-t border-border self-center mx-3" aria-hidden="true"></div>
-          <div className={`flex flex-col items-center ${formStep >= 2 ? 'text-brand-red' : 'text-muted'}`}>
+          <div className={`flex flex-col items-center ${formStep >= 2 ? 'text-accent' : 'text-muted'}`}>
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                formStep >= 2 ? 'bg-brand-red text-white' : 'bg-card-bg border border-border text-muted'
+                formStep >= 2 ? 'bg-primary text-white' : 'bg-card-bg border border-border text-muted'
               }`}
             >
               3
@@ -303,7 +306,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                   type="button"
                   onClick={() => handleNext(0)}
                   disabled={!name.trim() || !description.trim()}
-                  className="gradient-bg-red text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-red"
+                  className="bg-primary text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-red"
                 >
                   Next
                 </button>
@@ -425,7 +428,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                 <button
                   type="button"
                   onClick={() => handleNext(1)}
-                  className="gradient-bg-red text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red"
+                  className="bg-primary text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-red"
                 >
                   Next
                 </button>
@@ -456,7 +459,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                         onChange={(e) => setTwitterFollow(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-red"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                     </label>
                   </div>
                   {twitterFollow && (
@@ -492,7 +495,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                         onChange={(e) => setMinimumTokenBalance(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-red"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                     </label>
                   </div>
                   {minimumTokenBalance && (
@@ -545,7 +548,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                         onChange={(e) => setNftCheck(e.target.checked)}
                         className="sr-only peer"
                       />
-                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-red"></div>
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-red/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                     </label>
                   </div>
                   {nftCheck && (
@@ -579,7 +582,7 @@ export default function CommunityLotteryForm({ userPublicKey, onCreate, isLoadin
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="gradient-bg-red text-white font-medium py-3 px-8 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-red hover:shadow-lg animate-pulse"
+                  className="bg-primary text-white font-medium py-3 px-8 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-red hover:shadow-lg animate-pulse"
                 >
                   {isLoading ? (
                     <div className="flex items-center">

@@ -445,7 +445,7 @@ export default function Client() {
               <p className="text-muted mb-6">Be the first to create a community lottery with special requirements!</p>
               <button 
                 onClick={() => setShowCommunityForm(true)}
-                className="gradient-bg-red text-white font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-all duration-300"
+                className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-all duration-300"
               >
                 Create Community Lottery
               </button>

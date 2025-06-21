@@ -1,36 +1,33 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import freighterApi from "@stellar/freighter-api";
-import { LoadingSpinner } from './LoadingSkeleton';
 import toast from "react-hot-toast";
+import usePasskey from "../hooks/passkey.hook";
+import useWallet from "../hooks/useWallet.hook";
 
 export default function WalletConnection({ onConnect }: { onConnect?: (publicKey: string) => void }) {
-  const [publicKey, setPublicKey] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [publicKey, setPublicKey] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Check if wallet is connected on page load
-  useEffect(() => {
-    const checkFreighter = async () => {
-      try {
-        const isAvailable = await freighterApi.isConnected();
-        if (isAvailable) {
-          const { address } = await freighterApi.getAddress();
-          setPublicKey(address);
-          if (onConnect) onConnect(address);
-        }
-      } catch (error) {
-        const errorMsg = `Error checking wallet connection: ${(error as ApiErrorProps).message || 'Unknown error'}`;
-        toast.error(errorMsg);
-        console.error("Error checking Freighter connection:", error);
-      }
-    };
+  const { publicKey, handleLogin } = useWallet()
+  const { handleLogout, handleRegister, connect, contractId } = usePasskey()
 
-    checkFreighter();
-  }, [onConnect]);
+
+  useEffect(() => {
+    if (!contractId) {
+      return
+    }
+    handleLogin(contractId)
+  }, [contractId])
+
+  useEffect(() => {
+    if(!publicKey){
+      return
+    }
+    onConnect?.(publicKey)
+  }, [publicKey])
 
   // Handle click outside to close menu
   useEffect(() => {
@@ -74,30 +71,6 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
     };
   }, [isMenuOpen]);
 
-  // Handle connect button click
-  const handleConnectWallet = async () => {
-    setIsLoading(true);
-    try {
-      await freighterApi.setAllowed();
-      const { address } = await freighterApi.getAddress();
-      setPublicKey(address);
-      toast.success('Wallet connected successfully!');
-      if (onConnect) onConnect(address);
-    } catch (error) {
-      const errorMsg = `Failed to connect wallet: ${(error as ApiErrorProps).message || 'Please install Freighter extension'}`;
-      toast.error(errorMsg);
-      console.error("Error connecting to Freighter:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Handle disconnect
-  const handleDisconnect = () => {
-    setPublicKey(null);
-    setIsMenuOpen(false);
-    toast('Wallet disconnected');
-  };
 
   // Handle copy address
   const handleCopyAddress = async () => {
@@ -125,22 +98,36 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
 
   if (!publicKey) {
     return (
-      <button
-        ref={buttonRef}
-        onClick={handleConnectWallet}
-        disabled={isLoading}
-        className="bg-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
-        data-wallet-connect
-        aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
-        aria-describedby="wallet-connect-description"
-      >
-        {isLoading ? (
-          <div className="flex items-center">
-            <LoadingSpinner size="sm" className="mr-2" />
-            <span>Connecting...</span>
-          </div>
-        ) : "Connect Wallet"}
-      </button>
+      <div className="flex flex-wrap gap-2 items-center">
+        <button
+          ref={buttonRef}
+          onClick={() => connect()}
+          // disabled={isLoading}
+          className="bg-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
+          data-wallet-connect
+          // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
+          aria-describedby="wallet-connect-description"
+        >
+          Sign in
+          {/* {isLoading ? (
+            <div className="flex items-center">
+              <LoadingSpinner size="sm" className="mr-2" />
+              <span>Please wait...</span>
+            </div>
+          ) : "Sign in"} */}
+        </button>
+        <button
+          ref={buttonRef}
+          onClick={handleRegister}
+          // disabled={isLoading}
+          className="bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
+          data-wallet-connect
+          // aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
+          aria-describedby="wallet-connect-description"
+        >
+          {"Sign Up"}
+        </button>
+      </div>
     );
   }
 
@@ -156,16 +143,16 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
         aria-describedby="wallet-status"
       >
         <div className="flex items-center">
-          <div 
-            className="h-2 w-2 rounded-full bg-green-400 mr-2" 
+          <div
+            className="h-2 w-2 rounded-full bg-green-400 mr-2"
             aria-hidden="true"
             title="Wallet connected"
           ></div>
           <span>{formatAddress(publicKey)}</span>
-          <svg 
+          <svg
             className={`ml-2 h-4 w-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`}
-            fill="none" 
-            stroke="currentColor" 
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
@@ -174,8 +161,8 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
         </div>
       </button>
 
-      <div 
-        id="wallet-status" 
+      <div
+        id="wallet-status"
         className="sr-only"
         aria-live="polite"
       >
@@ -183,7 +170,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
       </div>
 
       {isMenuOpen && (
-        <div 
+        <div
           className="absolute right-0 mt-2 w-64 rounded-lg bg-card-bg border border-border shadow-lg z-50"
           role="menu"
           aria-labelledby="wallet-menu-button"
@@ -192,7 +179,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
           <div className="p-4">
             <div className="mb-4">
               <p className="text-sm text-muted mb-1" id="wallet-address-label">Connected Wallet</p>
-              <div 
+              <div
                 className="font-mono text-xs bg-background p-2 rounded overflow-hidden break-all"
                 role="text"
                 aria-labelledby="wallet-address-label"
@@ -204,7 +191,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
                 Your full Stellar wallet address
               </div>
             </div>
-            
+
             <div className="flex justify-between gap-2">
               <button
                 onClick={handleCopyAddress}
@@ -212,10 +199,10 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
                 role="menuitem"
                 aria-label="Copy wallet address to clipboard"
               >
-                <svg 
-                  className="w-3 h-3 mr-1" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-3 h-3 mr-1"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -223,17 +210,17 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
                 </svg>
                 Copy Address
               </button>
-              
+
               <button
-                onClick={handleDisconnect}
+                onClick={handleLogout}
                 className="btn btn-sm btn-outline text-red-500 border-red-500 hover:bg-red-500/10 text-xs focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-card-bg"
                 role="menuitem"
                 aria-label="Disconnect wallet"
               >
-                <svg 
-                  className="w-3 h-3 mr-1" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-3 h-3 mr-1"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -245,7 +232,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
           </div>
         </div>
       )}
-      
+
       {/* Hidden description for connect button */}
       <div id="wallet-connect-description" className="sr-only">
         Connect your Freighter wallet to interact with Stellar blockchain lotteries
