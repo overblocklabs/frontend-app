@@ -11,14 +11,10 @@ import { type Signer } from "passkey-kit";
 import { useRef, useState } from "react";
 
 export default function Client() {
-
-    const ADMIN_KEY = "AAAAEAAAAAEAAAABAAAAAQ=="; // TODO very rough until we're actually parsing the limits object
-
     const [isConnected, setIsConnected] = useState<boolean>(false)
 
     const contractId = useRef<string>('')
     const keyId = useRef<string>('')
-    const adminSigner = useRef<string|undefined>(undefined)
     const balance = useRef<string|undefined>(undefined)
     const signers = useRef<Signer[]>([])
 
@@ -32,16 +28,6 @@ export default function Client() {
 
     const getWalletSigners = async () => {
         signers.current = await server.getSigners(contractId.current);
-        console.log(signers.current);
-
-        const adminKeys = signers.current.filter(({ limits }) => limits === ADMIN_KEY);
-        if (!adminKeys.length) {
-            return
-        }
-
-        adminSigner.current = (
-            adminKeys?.find(({ key }) => keyId.current === key) || adminKeys[0]
-        ).key;
     }
 
     const fundWallet = async () => {
