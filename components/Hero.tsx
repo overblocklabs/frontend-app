@@ -32,10 +32,10 @@ export default function Hero() {
         <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 mt-[150px]">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
-          <div className="mb-8 flex justify-center">
+          <div className="mb-8  flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 animate-float">
               <img 
                 src="/images/lotellar-logo.png" 
@@ -46,9 +46,9 @@ export default function Hero() {
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">Decentralized</span>{' '}
-            <span className="gradient-text-red">Lottery Platform</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-primary">
+            <span>Decentralized</span>{' '}
+            <span>Lottery Platform</span>
           </h1>
           
           {/* Subtitle */}
@@ -60,13 +60,13 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <button 
               onClick={scrollToActiveLotteries}
-              className="gradient-bg-red text-white font-semibold px-8 py-4 text-lg rounded-lg hover:scale-105 transition-transform duration-300 hover:shadow-lg"
+              className="bg-primary text-white font-semibold px-8 py-4 text-lg rounded-sm hover:scale-105 transition-transform duration-300 hover:shadow-lg"
             >
               Explore Lotteries
             </button>
             <button 
               onClick={scrollToCreateLottery}
-              className="btn btn-outline px-8 py-4 text-lg hover:scale-105 transition-transform duration-300 border-brand-red text-brand-red hover:bg-brand-red hover:text-white"
+              className="btn btn-outline px-8 py-4 text-lg hover:scale-105  rounded-sm transition-transform duration-300 border-brand-red text-brand-red hover:bg-brand-red hover:text-white"
             >
               Create Lottery
             </button>

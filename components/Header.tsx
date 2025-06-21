@@ -68,7 +68,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
                 aria-hidden="true"
               />
             </div>
-            <span className="text-xl font-bold tracking-tight gradient-text-red font-heading">Lotellar</span>
+            <span className="text-xl font-light tracking-tight text-accent font-heading">Lotellar</span>
           </Link>
         </div>
 
@@ -80,7 +80,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
         >
           <Link 
             href="/" 
-            className="text-base font-medium text-white hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
             aria-current="page"
           >
             Home
@@ -88,21 +88,21 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
           </Link>
           <Link 
             href="#my-tickets" 
-            className="text-base font-medium text-white hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
           >
             My Tickets
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
           </Link>
           <Link 
             href="#create-lottery" 
-            className="text-base font-medium text-white hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
           >
             Create Lottery
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
           </Link>
           <Link 
             href="#contract-manager" 
-            className="text-base font-medium text-white hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
           >
             Community Lotteries
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
@@ -111,7 +111,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 rounded-md text-white hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
+          className="md:hidden p-2 rounded-md text-accent hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent"
           onClick={handleMobileMenuToggle}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"

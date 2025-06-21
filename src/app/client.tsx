@@ -276,7 +276,7 @@ export default function Client() {
       <section id="active-lotteries" className="py-20 bg-background/50">
         <div className="container">
           <div className="text-center mb-16 animate-fadeInUp">
-            <h2 className="section-title">Active Lotteries</h2>
+            <h2 className="section-title text-primary">Active Lotteries</h2>
             <p className="text-muted max-w-2xl mx-auto text-lg">
               Join ongoing lotteries and compete for amazing prizes. All results are transparent and verifiable on the blockchain.
             </p>
@@ -302,7 +302,7 @@ export default function Client() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-10 md:gap-15 lg:gap-20 relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 md:gap-15 lg:gap-20 relative">
               {lotteries
                 .filter(lottery => !lottery.isCompleted && !lottery.isCommunityLottery)
                 .map((lottery) => (

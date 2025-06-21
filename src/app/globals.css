@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +12,7 @@
   --background: #0A0B0D;
   --foreground: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.05);
-  --muted: rgba(255, 255, 255, 0.6);
+  --muted: #dedede;;
   --border: rgba(255, 255, 255, 0.1);
   --primary: #6C5CE7;
   --primary-hover: #4f46e5;
@@ -44,6 +46,7 @@
 /* Base styles */
 * {
   border-color: var(--border);
+  font-family: "Quicksand", sans-serif;
 }
 
 /* Focus styles for accessibility */
@@ -461,10 +464,13 @@ a:focus-visible {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(var(--deg, 135deg), var(--primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.gradient-text.reverse {
+  background: linear-gradient(var(--deg, 300deg), var(--accent), var(--primary));
 }
 
 .gradient-text-red {
@@ -472,6 +478,10 @@ a:focus-visible {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(var(--deg, 135deg), var(--primary), var(--accent));
 }
 
 .gradient-bg-red {
@@ -494,10 +504,7 @@ a:focus-visible {
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff, var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
 }
 
 @media (min-width: 768px) {

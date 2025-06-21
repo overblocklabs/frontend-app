@@ -129,7 +129,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
         ref={buttonRef}
         onClick={handleConnectWallet}
         disabled={isLoading}
-        className="bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
+        className="bg-primary text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background animate-bounce"
         data-wallet-connect
         aria-label={isLoading ? "Connecting to wallet..." : "Connect your Stellar wallet"}
         aria-describedby="wallet-connect-description"
@@ -149,7 +149,7 @@ export default function WalletConnection({ onConnect }: { onConnect?: (publicKey
       <button
         ref={buttonRef}
         onClick={handleMenuToggle}
-        className="bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background"
+        className="bg-primary font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background"
         aria-expanded={isMenuOpen}
         aria-haspopup="menu"
         aria-label={`Wallet menu. Connected address: ${formatAddress(publicKey)}`}

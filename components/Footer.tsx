@@ -36,7 +36,7 @@ export default function Footer() {
           
           {/* Navigation Links */}
           <nav 
-            className="flex space-x-8 mb-6 md:mb-0"
+            className="flex md:space-x-8 mb-6 md:mb-0 flex-wrap"
             role="navigation"
             aria-label="Footer navigation"
           >
