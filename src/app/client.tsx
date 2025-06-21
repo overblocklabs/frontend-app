@@ -51,17 +51,13 @@ export default function Client() {
 
     const connect = async (keyId_?: string) => {
         try {
-            // const { keyId: kid, contractId: cid } = await account.connectWallet(
-            const x = await account.connectWallet(
+            const { keyId: kid, contractId: cid } = await account.connectWallet(
                 {
                     keyId: keyId_,
                     getContractId: (keyId) => server.getContractId({ keyId }),
                 },
             );
-            console.log(x)
-
-            const { keyId: kid, contractId: cid } = x
-
+            
             keyId.current = base64url(kid);
             localStorage.setItem("sp:keyId", keyId.current);
 
