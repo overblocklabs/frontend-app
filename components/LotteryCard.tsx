@@ -126,7 +126,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
         {/* Left: Icon and title */}
         <div className="flex items-center gap-4 min-w-[160px]">
           <div 
-            className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-red to-brand-red-light flex items-center justify-center shadow-lg"
+            className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-lg"
             aria-hidden="true"
           >
             <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -136,7 +136,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
           <div>
             <h3 
               id={`lottery-title-${lottery.id}`}
-              className="text-xl font-bold text-white mb-1 leading-tight"
+              className="text-xl font-bold text-white mb-1 leading-tight capitalize"
             >
               {lottery.name}
             </h3>
@@ -160,7 +160,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-muted">Participants</span>
             <span 
-              className="text-xs font-semibold text-white"
+              className="text-xs font-semibold text-accent"
               aria-label={`${lottery.participants.length} of ${lottery.maxParticipants} participants`}
             >
               {lottery.participants.length}/{lottery.maxParticipants}
@@ -189,12 +189,12 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
         {/* Right: Prize and button */}
         <div className="flex flex-col items-end justify-between min-w-[120px] h-full">
           <div className="text-right">
-            <div className="text-xs text-muted uppercase tracking-wider mb-1">Prize Pool</div>
+            <div className="text-xs text-accent uppercase tracking-wider mb-1">Prize Pool</div>
             <div 
-              className="text-2xl font-extrabold gradient-text-red leading-tight"
+              className="text-2xl font-extrabold text-primary leading-tight"
               aria-label={`Prize pool: ${lottery.prizePool} XLM`}
             >
-              {lottery.prizePool} <span className="text-base font-medium text-muted">XLM</span>
+              {lottery.prizePool} <span className="text-base font-medium text-primary">XLM</span>
             </div>
           </div>
           
@@ -205,13 +205,13 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
               disabled={buttonProps.disabled || isLoading}
               className={`btn w-full py-2.5 px-6 font-semibold text-base transition-all duration-200 relative z-10 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background ${
                 !userPublicKey 
-                  ? 'btn-accent' 
+                  ? 'btn-primary' 
                   : isWinner
-                    ? 'btn-accent'
+                    ? 'btn-primary'
                     : hasJoined
-                      ? 'btn-secondary'
+                      ? 'btn-primary'
                       : isActive
-                        ? 'btn-accent'
+                        ? 'btn-primary'
                         : 'btn-outline opacity-50 cursor-not-allowed'
               }`}
               aria-label={buttonProps.ariaLabel}

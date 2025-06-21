@@ -359,7 +359,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .progress-fill {
-  background: linear-gradient(to right, #E53E3E, #F56565);
+  background: linear-gradient(to right, var(--primary), var(--primary-hover));
   height: 100%;
   transition: width 0.3s ease;
   border-radius: inherit;
