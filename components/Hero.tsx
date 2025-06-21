@@ -24,7 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden hero-bg">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden hero-bg" id='home'>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-blob"></div>

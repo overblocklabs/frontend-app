@@ -56,7 +56,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <Link 
-            href="/" 
+            href="#home" 
             className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded-md p-1"
             aria-label="Lotellar - Decentralized Lottery Platform Home"
           >
@@ -79,7 +79,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
           aria-label="Main navigation"
         >
           <Link 
-            href="/" 
+            href="#home" 
             className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
             aria-current="page"
           >
@@ -160,7 +160,7 @@ export default function Header({ onConnect, publicKey }: HeaderProps) {
         >
           <div className="container py-4 space-y-4">
             <Link 
-              href="/" 
+              href="#home" 
               className="block text-base font-medium text-white hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-2"
               onClick={() => setMobileMenuOpen(false)}
               aria-current="page"

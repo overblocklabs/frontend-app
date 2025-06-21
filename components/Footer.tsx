@@ -41,7 +41,7 @@ export default function Footer() {
             aria-label="Footer navigation"
           >
             <Link 
-              href="/" 
+              href="#home" 
               className="text-sm text-muted hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
             >
               Home

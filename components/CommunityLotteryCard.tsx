@@ -262,7 +262,7 @@ export default function CommunityLotteryCard({ lottery, userPublicKey, onEnter }
           disabled={!userPublicKey || !isActive || hasJoined || isLoading}
           className={`w-full py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 relative overflow-hidden ${
             !userPublicKey 
-              ? 'gradient-bg-red text-white hover:shadow-lg' 
+              ? 'bg-primary text-white hover:shadow-lg' 
               : isWinner
                 ? 'bg-primary text-white'
                 : hasJoined
