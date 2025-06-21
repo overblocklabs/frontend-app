@@ -1,10 +1,6 @@
 name: Build CI
 
-on:
-  push:
-    branches: [ "main", "dev" ]
-  pull_request:
-    branches: [ "main", "dev" ]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -36,4 +32,15 @@ jobs:
         run: pnpm install
 
       - name: Build App
+        env:
+          NEXT_PUBLIC_walletWasmHash: "ecd990f0b45ca6817149b6175f79b32efb442f35731985a084131e8265c4cd90"
+          NEXT_PUBLIC_nativeContractId: ""
+          NEXT_PUBLIC_networkPassphrase: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_rpcUrl: "https://soroban-testnet.stellar.org"
+          NEXT_PUBLIC_launchtubeUrl: "https://testnet.launchtube.xyz"
+          NEXT_PUBLIC_launchtubeJwt: "asdfasdf"
+          NEXT_PUBLIC_mercuryProjectName: "smart-wallets-next-dima"
+          NEXT_PUBLIC_mercuryUrl: "https://api.mercurydata.app"
+          NEXT_PUBLIC_mercuryJwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ29vZ2xlb2F1dGgyMTE3ODQ3NTgyODk0MzAwMjU4Mjc3IiwiZXhwIjoxNzUzMDk0NTk2LCJ1c2VyX2lkIjoyMjAsInVzZXJuYW1lIjoiYWtma2FyYTk3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDUwMjU5NSwiYXVkIjoicG9zdGdyYXBoaWxlIiwiaXNzIjoicG9zdGdyYXBoaWxlIn0.Cd4rI6KKZ9io15Vtucnzrm87J_hA4swnuS3YGm_CJws"
+          SUPABASE_DB_SERCET: ""
         run: pnpm build
