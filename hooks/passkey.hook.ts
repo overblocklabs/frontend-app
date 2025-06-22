@@ -65,6 +65,7 @@ const usePasskey = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("sp:keyId");
+    sessionStorage.removeItem('publicKey')
     location.reload();
   };
 
