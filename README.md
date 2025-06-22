@@ -24,7 +24,6 @@ Lotellar is a fully decentralized Web3 application built on the Stellar Soroban 
 
 ## 🔧 Key Features
 - 🎲 Lottery Mechanism: Provably fair lottery draws using on-chain pseudo-randomness via Soroban's vm::random, offering a VRF-like experience.
-- 🗳️ Voting System: Lightweight and anonymous voting modules ideal for communities, and decentralized governance.
 - 🔐 Passkey Authentication: Uses modern Passkey/WebAuthn authentication to provide seamless, passwordless login tied to a user's device.
 - 🔗 Freighter Wallet Integration: Interact with Soroban smart contracts directly via Freighter for signing transactions.
 
