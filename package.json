@@ -10,11 +10,14 @@
     "type-check": "npx tsc"
   },
   "dependencies": {
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
     "@stellar/freighter-api": "^4.1.0",
     "@stellar/stellar-sdk": "^13.3.0",
     "@supabase/supabase-js": "^2.50.0",
     "base64url": "^3.0.1",
     "buffer": "^6.0.3",
+    "nanoid": "^5.1.5",
     "next": "15.3.4",
     "passkey-kit": "^0.10.24",
     "react": "^19.0.0",
@@ -23,6 +26,7 @@
     "react-lottie": "^1.2.10",
     "react-tilt": "^1.0.2",
     "soroban-client": "^1.0.1",
+    "three": "^0.177.0",
     "yup": "^1.6.1",
     "zustand": "^5.0.5"
   },
@@ -35,6 +39,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-lottie": "^1.2.10",
+    "@types/three": "^0.177.0",
     "autoprefixer": "^10.4.17",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",

@@ -2,6 +2,7 @@ import base64url from "base64url";
 import { account, server } from "../lib/common";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { nanoid } from 'nanoid'
 
 const usePasskey = () => {
 
@@ -38,9 +39,8 @@ const usePasskey = () => {
   };
 
   const handleRegister = async () => {
-    const user = prompt("Give this passkey a name");
-    if (!user) return;
 
+    const user = nanoid(10)
     try {
       setPasskeyLoading(true)
       const {
