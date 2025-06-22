@@ -4,7 +4,9 @@ import React from 'react';
 import { Tilt } from 'react-tilt'
 import Image from 'next/image'
 
+
 export default function Hero() {
+
   const scrollToActiveLotteries = () => {
     const activeLotteriesSection = document.getElementById('active-lotteries');
     if (activeLotteriesSection) {
@@ -109,6 +111,8 @@ export default function Hero() {
 
         </div>
       </div>
+
+
     </section>
   );
 } 

@@ -125,7 +125,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
         {getStatusText()}
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-stretch md:justify-between gap-6 h-full">
+      <div className="flex flex-col md:flex-row md:items-stretch md:justify-between gap-6 h-full flex-wrap">
         {/* Left: Icon and title */}
         <div className="flex items-center gap-4 min-w-[160px]">
           <div 
