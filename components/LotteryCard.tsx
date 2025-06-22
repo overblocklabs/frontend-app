@@ -110,9 +110,9 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
 
   return (
     <article
-      className={`card card-hover transition-all duration-500 ease-out transform ${
+      className={`card transition-all bg-white backdrop-blur-md  duration-500 ease-out transform px-6 py-7 ${
         isHovered ? 'scale-[1.02] shadow-2xl border-accent/40 z-20 -rotate-1' : 'z-10 hover:scale-[1.01]'
-      } px-6 py-7 bg-gradient-to-br from-background/80 to-card/90 backdrop-blur-md relative overflow-visible focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:ring-offset-background animate-fadeInUp`}
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ minHeight: 260 }}
@@ -190,7 +190,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
         </div>
 
         {/* Right: Prize and button */}
-        <div className="flex flex-col items-end justify-between min-w-[120px] h-full">
+        <div className="flex flex-col items-end justify-between w-full h-full">
           <div className="text-right">
             <div className="text-xs text-accent uppercase tracking-wider mb-1">Prize Pool</div>
             <div 
