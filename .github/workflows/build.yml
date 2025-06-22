@@ -1,0 +1,66 @@
+name: Build CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build App
+        env:
+          NEXT_PUBLIC_walletWasmHash: "ecd990f0b45ca6817149b6175f79b32efb442f35731985a084131e8265c4cd90"
+          NEXT_PUBLIC_nativeContractId: ""
+          NEXT_PUBLIC_networkPassphrase: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_rpcUrl: "https://soroban-testnet.stellar.org"
+          NEXT_PUBLIC_launchtubeUrl: "https://testnet.launchtube.xyz"
+          NEXT_PUBLIC_launchtubeJwt: "asdfasdf"
+          NEXT_PUBLIC_mercuryProjectName: "smart-wallets-next-dima"
+          NEXT_PUBLIC_mercuryUrl: "https://api.mercurydata.app"
+          NEXT_PUBLIC_mercuryJwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZ29vZ2xlb2F1dGgyMTE3ODQ3NTgyODk0MzAwMjU4Mjc3IiwiZXhwIjoxNzUzMDk0NTk2LCJ1c2VyX2lkIjoyMjAsInVzZXJuYW1lIjoiYWtma2FyYTk3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDUwMjU5NSwiYXVkIjoicG9zdGdyYXBoaWxlIiwiaXNzIjoicG9zdGdyYXBoaWxlIn0.Cd4rI6KKZ9io15Vtucnzrm87J_hA4swnuS3YGm_CJws"
+          SUPABASE_DB_SERCET: ""
+          SUPABASE_PROJECT_URL: "https://asdda.supabase.co"
+          SUPABASE_DB_SECRET: "asdf"
+          SUPABASE_ANON_KEY: "asadsdf"
+          NEXT_PUBLIC_STELLAR_NETWORK: "testnet"
+          NEXT_PUBLIC_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
+          NEXT_PUBLIC_SOROBAN_RPC_URL: "https://soroban-testnet.stellar.org:443"
+          NEXT_PUBLIC_HORIZON_URL: "https://horizon-testnet.stellar.org"
+          NEXT_PUBLIC_LOTTERY_CONTRACT_ID: ""
+          NEXT_PUBLIC_NATIVE_TOKEN_ADDRESS: ""
+          NEXT_PUBLIC_PLATFORM_ADDRESS: ""
+          NEXT_PUBLIC_PLATFORM_FEE_PERCENTAGE: 10
+          NEXT_PUBLIC_APP_NAME: "Lotellar DApp"
+          NEXT_PUBLIC_APP_VERSION: "1.0.0"
+          NEXT_PUBLIC_DEFAULT_LOTTERY_DURATION: 3600
+          NEXT_PUBLIC_MIN_PARTICIPANTS: 2
+          NEXT_PUBLIC_MAX_PARTICIPANTS: 100
+          NEXT_PUBLIC_DEBUG_MODE: true
+          NEXT_PUBLIC_ENABLE_CONSOLE_LOGS: true
+          NEXT_PUBLIC_ALICE_ADDRESS: GAUVJS22CRSAJMBMXQO42JRGNITJVGA2IHR5OUV6UKHYQYQ5YIZEBTIB
+          
+        run: pnpm build

@@ -1,4 +1,4 @@
-name: Type Check CI
+name: Linter CI
 
 on: [push, pull_request]
 
@@ -31,5 +31,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Type Check
-        run: pnpm type-check
+      - name: Linter
+        run: pnpm lint
