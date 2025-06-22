@@ -25,6 +25,133 @@ Lotellar is a fully decentralized Web3 application built on the Stellar Soroban 
 - 🔐 Passkey Authentication: Uses modern Passkey/WebAuthn authentication to provide seamless, passwordless login tied to a user's device.
 - 🔗 Freighter Wallet Integration: Interact with Soroban smart contracts directly via Freighter for signing transactions.
 
+## 🧰 Installation & Usage
+
+This project uses **[pnpm](https://pnpm.io/)** as the package manager.  
+Make sure you have it installed globally:
+
+```bash
+npm install -g pnpm
+```
+
+### 🔧 1. Install Dependencies
+```bash
+pnpm install
+```
+
+
+### ⚙️ 2. Set Up Environment Variables
+```bash
+cp .env.example .env
+```
+📝 Fill in the required values in your .env file before running the app.
+
+### 🧪 3. Run in Development Mode
+```bash
+pnpm dev
+```
+
+
+### 🏗️ 4. Build for Production
+```bash
+pnpm build
+```
+
+### ⚙️ Deployment & CI/CD Workflow
+```bash
+pnpm start
+```
+---
+
+## ⚙️ Deployment & CI/CD Workflow
+
+Lotellar uses a robust CI/CD setup combining **local pre-commit checks** and **GitHub Actions workflows** to ensure code quality, type safety, and build integrity before any deployment.
+
+### 🔄 Local Development Pipeline (via Husky)
+
+1. **Pre-commit Hook**
+   - ✅ `pnpm lint` – Ensures code style and formatting
+   - ✅ `pnpm type-check` – Verifies TypeScript correctness
+
+2. **Pre-push Hook**
+   - ✅ `pnpm build` – Builds the application to catch runtime or build-time errors before pushing
+
+3. **Commit Message Check**
+   - ✅ `commitlint` – Enforces conventional commit rules
+
+---
+
+### ☁️ GitHub Actions Workflows
+
+Once code is pushed to GitHub, the following workflows run:
+
+| Workflow Name       | Purpose                            |
+|---------------------|------------------------------------|
+| ✅ `build-check.yml` | Verifies production build integrity |
+| 🧹 `linter.yml`       | Runs ESLint to ensure code style    |
+| 🧠 `type-check.yml`   | Validates TypeScript types          |
+| ✍️ `commitlint.yml`   | Checks commit messages              |
+
+![diagram](public/images/diagram.png)
+
+Workflow Steps
+
+Developer (local env) - Developer works in local environment
+Husky Hook (pre-commit) - Pre-commit checks
+
+pnpm lint - Code style checking
+pnpm type-check - Type checking
+
+
+Husky Hook (pre-push) - Pre-push check
+
+pnpm build - Project build check
+
+
+Git Commit - Commit process
+
+commitlint - Commit message format validation
+
+
+GitHub Push Trigger - GitHub push trigger
+GitHub Actions Workflows - Automated workflows
+
+build check - Build validation
+type-check - Type checking
+linter - Code style checking
+commitlint - Commit message validation
+
+## Workflow Steps
+
+- Developer (local env) - Developer works in local environment
+- Husky Hook (pre-commit) - Pre-commit checks
+
+- pnpm lint - Code style checking
+- pnpm type-check - Type checking
+
+
+- Husky Hook (pre-push) - Pre-push check
+
+- pnpm build - Project build check
+
+
+## Git Commit - Commit process
+
+- commitlint - Commit message format validation
+
+
+- GitHub Push Trigger - GitHub push trigger
+- GitHub Actions Workflows - Automated workflows
+
+- build check - Build validation
+- type-check - Type checking
+- linter - Code style checking
+- commitlint - Commit message validation
+
+---
+
+### 🧭 CI/CD Flow Diagram
+
 ## 🛠️ Tech Stack
 - Frontend: Next.js + TailwindCSS + TypeScript
 - Smart Contracts: Rust (Stellar Soroban)
