@@ -304,7 +304,16 @@ export default function Client() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">No Active Lotteries</h3>
                 <p className="text-muted mb-6">Be the first to create a lottery and start winning!</p>
-                <button className="btn btn-accent p-3">
+
+                <button 
+                  className="btn btn-accent p-3"
+                  onClick={() => {
+                    document.getElementById('create-lottery')?.scrollIntoView({ 
+                      behavior: 'smooth' 
+                    });
+                  }}
+                >
+
                   Create Lottery
                 </button>
               </div>

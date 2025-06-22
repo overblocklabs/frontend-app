@@ -20,25 +20,33 @@
   --font-sans: system-ui, -apple-system, sans-serif;
   --font-heading: system-ui, -apple-system, sans-serif;
   
-  /* Dark Modern Color Scheme like Hexa Protocol */
+  /* Elegant Purple-Blue Dark Scheme */
   --background: #0A0B0D;
   --foreground: #ffffff;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --muted: #dedede;;
-  --border: rgba(255, 255, 255, 0.1);
-  --primary: #6C5CE7;
-  --primary-hover: #4f46e5;
-  --secondary: #FF6B6B;
-  --secondary-hover: #059669;
-  --accent: #00D2FF;
-  --accent-hover: #db2777;
+  --card-bg: rgba(139, 69, 255, 0.08);
+  --muted: #B8B8B8;
+  --border: rgba(139, 69, 255, 0.2);
+  --primary: #8B45FF;
+  --primary-hover: #7C3AED;
+  --secondary: #3B82F6;
+  --secondary-hover: #2563EB;
+  --accent: #06B6D4;
+  --accent-hover: #0891B2;
   --radius: 1rem;
   
   /* Accessibility colors */
   --focus-ring: var(--accent);
-  --error: #ef4444;
-  --success: #22c55e;
-  --warning: #f59e0b;
+  --error: #F87171;
+  --success: #34D399;
+  --warning: #FBBF24;
+  
+  /* Subtle neon effects */
+  --neon-purple: #8B45FF;
+  --neon-blue: #3B82F6;
+  --neon-cyan: #06B6D4;
+  --neon-indigo: #6366F1;
+  --neon-violet: #8B5CF6;
+  --neon-slate: #64748B;
 }
 
 .dark {
@@ -198,8 +206,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-primary:hover:not(:disabled) {
   background-color: var(--primary-hover);
-  box-shadow: 0 0 15px rgba(108,92,231,0.25);
-  transform: scale(1.05);
+  box-shadow: 
+    0 0 15px rgba(139, 69, 255, 0.3),
+    0 0 25px rgba(139, 69, 255, 0.15);
+  transform: scale(1.02);
 }
 
 .btn-secondary {
@@ -208,8 +218,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-secondary:hover:not(:disabled) {
   background-color: var(--secondary-hover);
-  box-shadow: 0 0 15px rgba(255,107,107,0.25);
-  transform: scale(1.05);
+  box-shadow: 
+    0 0 15px rgba(59, 130, 246, 0.3),
+    0 0 25px rgba(59, 130, 246, 0.15);
+  transform: scale(1.02);
 }
 
 .btn-accent {
@@ -259,14 +271,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(4px);
 }
 
-.card-hover:hover {
-  border-color: rgba(0,210,255,0.5);
-  box-shadow: 0 0 15px rgba(0,210,255,0.1);
-  transition-property: all;
-  transition-duration: 300ms;
-  z-index: 50 !important;
-  position: relative;
-}
+
 
 /* Enhanced focus for interactive cards - removed */
 .card:focus-within {
@@ -372,10 +377,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .progress-fill {
-  background: linear-gradient(to right, var(--primary), var(--primary-hover));
+  background: linear-gradient(to right, var(--neon-purple), var(--neon-cyan));
   height: 100%;
   transition: width 0.3s ease;
   border-radius: inherit;
+  box-shadow: 
+    0 0 8px rgba(139, 69, 255, 0.3),
+    inset 0 0 8px rgba(139, 69, 255, 0.1);
 }
 
 /* Enhanced link styles */
@@ -769,4 +777,116 @@ a:focus-visible {
   border-left-color: var(--accent);
   background-color: rgba(0, 210, 255, 0.1);
 } 
+
+/* NEON EFFECTS */
+.neon-glow {
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.neon-glow-purple {
+  color: var(--neon-purple);
+  text-shadow: 
+    0 0 3px var(--neon-purple),
+    0 0 6px var(--neon-purple);
+}
+
+.neon-glow-blue {
+  color: var(--neon-blue);
+  text-shadow: 
+    0 0 3px var(--neon-blue),
+    0 0 6px var(--neon-blue);
+}
+
+.neon-glow-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 
+    0 0 3px var(--neon-cyan),
+    0 0 6px var(--neon-cyan);
+}
+
+.neon-border {
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.neon-card {
+  background: rgba(139, 69, 255, 0.05);
+  border: 1px solid rgba(139, 69, 255, 0.2);
+  box-shadow: 
+    0 0 10px rgba(139, 69, 255, 0.1),
+    inset 0 0 10px rgba(139, 69, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
+
+.neon-pulse {
+  animation: neonPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow: 
+      0 0 3px currentColor,
+      0 0 6px currentColor;
+  }
+  to {
+    text-shadow: 
+      0 0 1px currentColor,
+      0 0 3px currentColor;
+  }
+}
+
+/* Badge subtle neon variants */
+.badge-neon-purple {
+  background: rgba(139, 69, 255, 0.15);
+  color: var(--neon-purple);
+  border: 1px solid rgba(139, 69, 255, 0.3);
+  box-shadow: 0 0 8px rgba(139, 69, 255, 0.2);
+}
+
+.badge-neon-blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--neon-blue);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.badge-neon-cyan {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--neon-cyan);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.2);
+}
+
+/* Subtle animated neon borders */
+.neon-border-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-border-animated::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue), var(--neon-cyan), var(--neon-purple));
+  background-size: 200% 200%;
+  animation: neonBorderMove 4s linear infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@keyframes neonBorderMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
 
