@@ -4,7 +4,7 @@
 [![TypeCheck](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml)
 
 - 🧪 **Live Demo**: [https://lotellar.netlify.app](https://lotellar.netlify.app)
-- 🎥 **Watch App Video**: [Here](https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing)
+- 🎥 **Watch App Video**: [Here]([https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing](https://drive.google.com/file/d/1sF9iiLQ0akKjencyfvds5udjKxBI3Ni5/view?usp=sharing))
 - 🧪 **Pitch Deck Presentation**: [Here](https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing)
 - 📕 **Gitbook**: [https://overblock.gitbook.io/lotellar/incentivized-lotteries](https://overblock.gitbook.io/lotellar/incentivized-lotteries)
 
