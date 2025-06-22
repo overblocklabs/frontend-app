@@ -36,6 +36,15 @@ export default function Hero() {
 
       <div className="container relative z-10 mt-[150px]">
         <div className="text-center max-w-4xl mx-auto">
+
+
+        <div className='flex flex-wrap gap-5 items-center justify-evenly w-full gap-5 mb-[50px]'>
+            <Image src={'/images/stellar-logo.svg'} width={150} height={150} alt='stellar logo' />
+            <Image src={'/images/scf-logo.svg'} width={40} height={40} alt='scf logo' />
+            <Image src={'/images/stellar-network.svg'} width={150} height={150} alt='stellar logo' />
+            <Image src={'/images/soroban.svg'} width={150} height={150} alt='stellar logo' />
+          </div>
+
           {/* Logo */}
           <div className="mb-8  flex justify-center">
             <div className="w-32 h-32 md:w-40 md:h-40 animate-float">
@@ -98,12 +107,6 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className='flex flex-wrap gap-5 items-center justify-evenly w-full gap-5 mt-[70px]'>
-            <Image src={'/images/stellar-logo.svg'} width={150} height={150} alt='stellar logo' />
-            <Image src={'/images/scf-logo.svg'} width={40} height={40} alt='scf logo' />
-            <Image src={'/images/stellar-network.svg'} width={150} height={150} alt='stellar logo' />
-            <Image src={'/images/soroban.svg'} width={150} height={150} alt='stellar logo' />
-          </div>
         </div>
       </div>
     </section>
