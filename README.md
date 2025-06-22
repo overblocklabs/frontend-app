@@ -17,7 +17,7 @@
 </p>
 
 
-# Lotellar – Decentralized Voting & Lottery System
+# Lotellar – Lottery System
 
 ## 🧠 Summary
 Lotellar is a fully decentralized Web3 application built on the Stellar Soroban smart contract platform that enables trustless lotteries and transparent voting. Designed with transparency, user-friendliness, and accessibility in mind, Lotellar aims to democratize participation in public draws and polls using blockchain-native identity and randomness.
@@ -172,10 +172,10 @@ Lotellar envisions a world where trustless random draws and governance are not e
 ## 👥 Team
 Lotellar was built by a 4-person team of developers and designers with a shared passion for decentralized systems, trustless infrastructure, and accessible crypto UX. We combined our strengths in smart contract development, frontend engineering, product design, and blockchain architecture to deliver a seamless Web3 experience.
 
-# Lotellar – Decentralized Voting & Lottery System
+# Lotellar – Lottery System
 
 ## 🧠 Summary
-Lotellar is a fully decentralized Web3 application built on the Stellar Soroban smart contract platform that enables trustless lotteries and transparent voting. Designed with transparency, user-friendliness, and accessibility in mind, Lotellar aims to democratize participation in public draws and polls using blockchain-native identity and randomness.
+Lotellar is a fully decentralized Web3 application built on the Stellar Soroban smart contract platform that enables trustless lotteries. Designed with transparency, user-friendliness, and accessibility in mind, Lotellar aims to democratize participation in public draws and polls using blockchain-native identity and randomness.
 
 ## 🔧 Key Features
 - 🎲 Lottery Mechanism: Provably fair lottery draws using on-chain pseudo-randomness via Soroban's vm::random, offering a VRF-like experience.
