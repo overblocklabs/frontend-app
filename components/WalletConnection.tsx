@@ -29,6 +29,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
     }
     onConnect?.()
     setUserPublicKey(publicKey)
+    sessionStorage.setItem('publicKey', publicKey)
   }, [publicKey])
 
   useEffect(() => {
@@ -59,6 +60,14 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const savedPublicKey = sessionStorage.getItem('publicKey')
+    if(!savedPublicKey){
+      return
+    }
+    setUserPublicKey(savedPublicKey)
+  }, [])
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -156,7 +165,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
         className="bg-primary font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-background"
         aria-expanded={isMenuOpen}
         aria-haspopup="menu"
-        aria-label={`Wallet menu. Connected address: ${formatAddress(publicKey)}`}
+        aria-label={`Wallet menu. Connected address: ${formatAddress(userPublicKey)}`}
         aria-describedby="wallet-status"
       >
         <div className="flex items-center">
@@ -165,7 +174,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
             aria-hidden="true"
             title="Wallet connected"
           ></div>
-          <span>{formatAddress(publicKey)}</span>
+          <span>{formatAddress(userPublicKey)}</span>
           <svg
             className={`ml-2 h-4 w-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`}
             fill="none"
@@ -183,7 +192,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
         className="sr-only"
         aria-live="polite"
       >
-        {publicKey ? `Wallet connected: ${publicKey}` : 'No wallet connected'}
+        {userPublicKey ? `Wallet connected: ${userPublicKey}` : 'No wallet connected'}
       </div>
 
       {isMenuOpen && (
@@ -202,7 +211,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
                 aria-labelledby="wallet-address-label"
                 aria-describedby="wallet-address-description"
               >
-                {publicKey}
+                {userPublicKey}
               </div>
               <div id="wallet-address-description" className="sr-only">
                 Your full Stellar wallet address
