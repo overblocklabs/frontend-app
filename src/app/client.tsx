@@ -461,13 +461,12 @@ export default function Client() {
                 {communityLotteries
                   .filter(lottery => !lottery.isCompleted)
                   .map((lottery) => (
-                    <Tilt key={lottery.id}>
                       <CommunityLotteryCard
+                      key={lottery.id}
                         lottery={lottery}
                         userPublicKey={userPublicKey as string}
                         onEnter={handleEnterCommunityLottery}
                       />
-                    </Tilt>
                   ))}
               </div>
             )}
