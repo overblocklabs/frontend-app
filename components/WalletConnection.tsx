@@ -120,7 +120,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
   }, [])
 
   return <>
-    {!userPublicKey ? <div className="flex flex-wrap gap-2 items-center">
+    {!userPublicKey ? <div className="flex flex-wrap gap-2 items-center justify-end">
       <button
         ref={buttonRef}
         onClick={() => connect()}

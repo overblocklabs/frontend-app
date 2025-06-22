@@ -124,7 +124,7 @@ export default function CommunityLotteryCard({ lottery, userPublicKey, onEnter }
       <div className="absolute top-0 left-0 w-20 h-20 bg-brand-red/10 rounded-full blur-xl"></div>
       <div className="absolute bottom-0 right-0 w-16 h-16 bg-brand-red-light/10 rounded-full blur-lg"></div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full justify-between">
         {/* Header Section */}
         <div className="flex items-start gap-4 mb-6">
           <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center shadow-lg transform rotate-3">
@@ -266,7 +266,7 @@ export default function CommunityLotteryCard({ lottery, userPublicKey, onEnter }
         <button
           onClick={handleEnterLottery}
           disabled={!isActive || hasJoined || isLoading}
-          className={`w-full py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 relative overflow-hidden ${
+          className={`w-full mb-10 py-3 px-6 rounded-xl font-semibold  text-base transition-all duration-300 relative overflow-hidden ${
             !userPublicKey 
               ? 'bg-primary text-white hover:shadow-lg' 
               : isWinner

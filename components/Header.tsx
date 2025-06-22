@@ -84,7 +84,7 @@ export default function Header({ onConnect, onStart, onError }: HeaderProps) {
         >
           <Link 
             href="#home" 
-            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1 text-center" 
             aria-current="page"
           >
             Home
@@ -92,21 +92,21 @@ export default function Header({ onConnect, onStart, onError }: HeaderProps) {
           </Link>
           <Link 
             href="#my-tickets" 
-            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1 text-center"
           >
             My Tickets
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
           </Link>
           <Link 
             href="#create-lottery" 
-            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1 text-center"
           >
             Create Lottery
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
           </Link>
           <Link 
             href="#community-lotteries-gallery" 
-            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
+            className="text-base font-medium text-accent hover:text-accent transition-colors relative group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1 text-center"
           >
             Community Lotteries
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" aria-hidden="true"></span>
