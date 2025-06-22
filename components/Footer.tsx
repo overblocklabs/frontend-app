@@ -108,8 +108,6 @@ export default function Footer() {
           </p>
           <div className='flex flex-wrap gap-5 items-center justify-evenly w-full gap-5 my-4'>
             <Image src={'/images/stellar-logo.svg'} width={150} height={150} alt='stellar logo' />
-            <Image src={'/images/scf-logo.svg'} width={40} height={40} alt='scf logo' />
-            <Image src={'/images/stellar-network.svg'} width={150} height={150} alt='stellar logo' />
             <Image src={'/images/soroban.svg'} width={150} height={150} alt='stellar logo' />
           </div>
         </div>
