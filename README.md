@@ -6,6 +6,7 @@
 - 🧪 **Live Demo**: [https://lotellar.netlify.app](https://lotellar.netlify.app)
 - 🎥 **Watch App Video**: [Here](https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing)
 - 🧪 **Pitch Deck Presentation**: [Here](https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing)
+- 📕 **Gitbook**: [https://overblock.gitbook.io/lotellar/incentivized-lotteries](https://overblock.gitbook.io/lotellar/incentivized-lotteries)
 
 # Stellar Hack Pera
 
@@ -23,7 +24,7 @@ Lotellar is a fully decentralized Web3 application built on the Stellar Soroban 
 
 ## 🔧 Key Features
 - 🎲 Lottery Mechanism: Provably fair lottery draws using on-chain pseudo-randomness via Soroban's vm::random, offering a VRF-like experience.
-- 🗳️ Voting System: Lightweight and anonymous voting modules ideal for DAOs, communities, and decentralized governance.
+- 🗳️ Voting System: Lightweight and anonymous voting modules ideal for communities, and decentralized governance.
 - 🔐 Passkey Authentication: Uses modern Passkey/WebAuthn authentication to provide seamless, passwordless login tied to a user's device.
 - 🔗 Freighter Wallet Integration: Interact with Soroban smart contracts directly via Freighter for signing transactions.
 
@@ -161,7 +162,6 @@ commitlint - Commit message validation
 - Authentication: Passkey/Freighter
 
 ## 📌 Use Cases
-- DAO decision-making (on-chain voting)
 - Transparent NFT/Token lotteries
 - Raffle giveaways for Web3 communities
 - Web3-native anonymous polling
@@ -190,7 +190,6 @@ Lotellar is a fully decentralized Web3 application built on the Stellar Soroban 
 - Authentication: Passkey/Freighter
 
 ## 📌 Use Cases
-- DAO decision-making (on-chain voting)
 - Transparent NFT/Token lotteries
 - Raffle giveaways for Web3 communities
 - Web3-native anonymous polling
