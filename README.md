@@ -4,8 +4,7 @@
 [![TypeCheck](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml)
 
 - 🧪 **Live Demo**: [https://lotellar.netlify.app](https://lotellar.netlify.app)
-- 🧪 **Pitch Deck Presentation**: [[https://lotellar.netlify.app](https://lotellar.netlify.app](https://drive.google.com/file/d/1pAj5o0BciQageaSTJZieBShTDp2YCzH2/view?usp=sharing))
-
+- 🧪 **Pitch Deck Presentation**: [https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing](https://drive.google.com/file/d/1tK4jF9rPK7zIXG57brtX9gvvJ24oN21O/view?usp=sharing)
 
 # Stellar Hack Pera
 
