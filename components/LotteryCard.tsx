@@ -10,7 +10,7 @@ interface LotteryCardProps {
 }
 
 export default function LotteryCard({ lottery, userPublicKey, onEnter }: LotteryCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   
   const isActive = lottery.participants.length < lottery.maxParticipants && !lottery.isCompleted;
@@ -110,11 +110,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
 
   return (
     <article
-      className={`card transition-all bg-white backdrop-blur-md  duration-500 ease-out transform px-6 py-7 ${
-        isHovered ? 'scale-[1.02] shadow-2xl border-accent/40 z-20 -rotate-1' : 'z-10 hover:scale-[1.01]'
-      }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="card neon-card transition-all duration-500 ease-out transform px-6 py-7 z-10"
       style={{ minHeight: 260 }}
       role="article"
       aria-labelledby={`lottery-title-${lottery.id}`}
@@ -140,6 +136,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
             <h3 
               id={`lottery-title-${lottery.id}`}
               className="text-xl font-bold text-white mb-1 leading-tight capitalize"
+              style={{ textShadow: '0 0 4px rgba(139, 69, 255, 0.5)' }}
             >
               {lottery.name}
             </h3>
@@ -147,7 +144,7 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
             <div className="mt-2">
               <span 
                 className={`badge ${
-                  isActive ? 'badge-success' : lottery.isCompleted ? 'badge-accent' : 'badge-warning'
+                  isActive ? 'badge-neon-purple' : lottery.isCompleted ? 'badge-neon-cyan' : 'badge-neon-blue'
                 }`}
                 role="status"
                 aria-label={`Lottery status: ${isActive ? 'Active' : lottery.isCompleted ? 'Ended' : 'In Progress'}`}
@@ -194,10 +191,10 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
           <div className="text-right">
             <div className="text-xs text-accent uppercase tracking-wider mb-1">Prize Pool</div>
             <div 
-              className="text-2xl font-extrabold text-primary leading-tight"
+              className="text-2xl font-extrabold neon-glow-purple neon-pulse leading-tight"
               aria-label={`Prize pool: ${lottery.prizePool} XLM`}
             >
-              {lottery.prizePool} <span className="text-base font-medium text-primary">XLM</span>
+              {lottery.prizePool} <span className="text-base font-medium neon-glow-cyan">XLM</span>
             </div>
           </div>
           
