@@ -15,9 +15,11 @@ import CommunityLotteryCard, { CommunityLotteryType } from '../../components/Com
 import toast, { Toaster } from 'react-hot-toast';
 import { Tilt } from 'react-tilt';
 import LoadingModal from '../../components/LoadingModal';
+import useKeyStore from '../../store/key.store';
 
 export default function Client() {
-  const [userPublicKey, setUserPublicKey] = useState<string | null>(null);
+
+  const {userPublicKey, setUserPublicKey} = useKeyStore()
 
   // Community Lottery Form State
   const [showCommunityForm, setShowCommunityForm] = useState(false);
@@ -270,7 +272,7 @@ export default function Client() {
       <Toaster />
       {isConnecting && <LoadingModal />}
       {/* Header */}
-      <Header onStart={() => setConnecting(true)} onError={() => setConnecting(false)} onConnect={handleWalletConnect} publicKey={userPublicKey} />
+      <Header onStart={() => setConnecting(true)} onError={() => setConnecting(false)} onConnect={handleWalletConnect}  />
 
 
       {/* Main Content */}
@@ -315,7 +317,7 @@ export default function Client() {
                     <Tilt key={lottery.id}>
                       <LotteryCard
                         lottery={lottery}
-                        userPublicKey={userPublicKey}
+                        userPublicKey={userPublicKey as string}
                         onEnter={handleEnterLottery}
                       />
                     </Tilt>
@@ -463,7 +465,7 @@ export default function Client() {
                     <Tilt key={lottery.id}>
                       <CommunityLotteryCard
                         lottery={lottery}
-                        userPublicKey={userPublicKey}
+                        userPublicKey={userPublicKey as string}
                         onEnter={handleEnterCommunityLottery}
                       />
                     </Tilt>
@@ -485,7 +487,7 @@ export default function Client() {
 
             <div className="max-w-2xl mx-auto">
               <CreateLotteryForm
-                userPublicKey={userPublicKey}
+                userPublicKey={userPublicKey as string}
                 onCreate={handleCreateLottery}
                 isLoading={createLotteryLoading}
               />
@@ -588,7 +590,12 @@ export default function Client() {
                 </p>
 
                 <button
-                  onClick={() => setShowCommunityForm(true)}
+                  onClick={() => {
+                    if(!userPublicKey){
+                      return window.dispatchEvent(new Event('connect-wallet'))
+                    }
+                    setShowCommunityForm(true)
+                  }}
                   className="bg-primary text-white font-semibold px-8 py-4 text-lg rounded-lg hover:scale-105 transition-all duration-300 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 focus:ring-offset-card-bg"
                 >
                   <svg className="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -608,7 +615,7 @@ export default function Client() {
       {/* Community Lottery Form Modal */}
       {showCommunityForm && (
         <CommunityLotteryForm
-          userPublicKey={userPublicKey}
+          userPublicKey={userPublicKey as string}
           onCreate={handleCreateCommunityLottery}
           isLoading={communityLotteryLoading}
           onClose={() => setShowCommunityForm(false)}

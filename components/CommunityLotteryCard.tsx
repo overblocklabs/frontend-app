@@ -36,7 +36,13 @@ export default function CommunityLotteryCard({ lottery, userPublicKey, onEnter }
 
   // Handle enter lottery
   const handleEnterLottery = async () => {
-    if (!isActive || !userPublicKey || hasJoined) return;
+
+    if(!userPublicKey){
+      window.dispatchEvent(new Event('connect-wallet'))
+      return 
+    }
+
+    if (!isActive || hasJoined) return;
     
     // Check if all requirements are completed (temporarily disabled for testing)
     // if (activeRequirements > 0 && !allRequirementsCompleted()) {
@@ -259,7 +265,7 @@ export default function CommunityLotteryCard({ lottery, userPublicKey, onEnter }
         {/* Action Button */}
         <button
           onClick={handleEnterLottery}
-          disabled={!userPublicKey || !isActive || hasJoined || isLoading}
+          disabled={!isActive || hasJoined || isLoading}
           className={`w-full py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 relative overflow-hidden ${
             !userPublicKey 
               ? 'bg-primary text-white hover:shadow-lg' 

@@ -33,7 +33,10 @@ export default function LotteryCard({ lottery, userPublicKey, onEnter }: Lottery
   
   // Handle enter lottery
   const handleEnterLottery = async () => {
-    if (!isActive || !userPublicKey || hasJoined) return;
+    if(!userPublicKey){
+      return window.dispatchEvent(new Event('connect-wallet'))
+    }
+    if (!isActive || hasJoined) return;
     setIsLoading(true);
     try {
       await onEnter(lottery.id);

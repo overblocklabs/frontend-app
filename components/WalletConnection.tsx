@@ -4,8 +4,9 @@ import React, { useEffect, useState, useRef } from "react";
 import toast from "react-hot-toast";
 import usePasskey from "../hooks/passkey.hook";
 import useWallet from "../hooks/useWallet.hook";
+import useKeyStore from "../store/key.store";
 
-export default function WalletConnection({ onConnect, onStart, onError }: { onConnect?: (publicKey: string) => void, onStart?: () => void, onError?: () => void }) {
+export default function WalletConnection({ onConnect, onStart, onError, useConnect = false }: { onConnect?: (publicKey: string) => void, onStart?: () => void, onError?: () => void, useConnect?: boolean }) {
   // const [publicKey, setPublicKey] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -13,7 +14,7 @@ export default function WalletConnection({ onConnect, onStart, onError }: { onCo
 
   const { publicKey, handleLogin, isWalletLoading, isWalletError } = useWallet()
   const { handleLogout, handleRegister, connect, contractId, isPassKeyLoading, isPassKeyError } = usePasskey()
-
+const {userPublicKey, setUserPublicKey} = useKeyStore()
 
   useEffect(() => {
     if (!contractId) {
@@ -27,6 +28,7 @@ export default function WalletConnection({ onConnect, onStart, onError }: { onCo
       return
     }
     onConnect?.(publicKey)
+    setUserPublicKey(publicKey)
   }, [publicKey])
 
   useEffect(() => {
@@ -108,8 +110,17 @@ export default function WalletConnection({ onConnect, onStart, onError }: { onCo
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    if(!useConnect){
+      return
+    }
+    window.addEventListener('connect-wallet', () => {
+      connect()
+    })
+  }, [])
+
   return <>
-    {!publicKey ? <div className="flex flex-wrap gap-2 items-center">
+    {!userPublicKey ? <div className="flex flex-wrap gap-2 items-center">
       <button
         ref={buttonRef}
         onClick={() => connect()}

@@ -3,17 +3,19 @@
 import { useState, useEffect } from 'react';
 import WalletConnection from './WalletConnection';
 import Link from 'next/link';
+import useKeyStore from '../store/key.store';
 
 interface HeaderProps {
   onConnect: (publicKey: string) => void;
   onStart?: () => void;
   onError?: () => void;
-  publicKey: string | null;
 }
 
-export default function Header({ onConnect, publicKey, onStart, onError }: HeaderProps) {
+export default function Header({ onConnect, onStart, onError }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const {userPublicKey} = useKeyStore()
   
   useEffect(() => {
     const handleScroll = () => {
@@ -136,7 +138,7 @@ export default function Header({ onConnect, publicKey, onStart, onError }: Heade
 
         {/* Wallet Connection */}
         <div className="hidden md:flex items-center space-x-4">
-          {publicKey && (
+          {userPublicKey && (
             <div 
               className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-card-bg/60 border border-border/50"
               role="status"
@@ -147,7 +149,7 @@ export default function Header({ onConnect, publicKey, onStart, onError }: Heade
             </div>
           )}
           <div className="scale-110">
-            <WalletConnection onError={onError} onStart={onStart} onConnect={onConnect} />
+            <WalletConnection useConnect={true} onError={onError} onStart={onStart} onConnect={onConnect} />
           </div>
         </div>
       </div>
@@ -192,7 +194,7 @@ export default function Header({ onConnect, publicKey, onStart, onError }: Heade
             </Link>
             
             <div className="pt-4 border-t border-border/50">
-              {publicKey && (
+              {userPublicKey && (
                 <div 
                   className="flex items-center space-x-2 px-2 py-2 mb-4"
                   role="status"
@@ -202,7 +204,7 @@ export default function Header({ onConnect, publicKey, onStart, onError }: Heade
                   <span className="text-xs text-muted font-medium">Wallet Connected</span>
                 </div>
               )}
-              <WalletConnection onError={onError} onStart={onStart} onConnect={onConnect} />
+              <WalletConnection useConnect={true} onError={onError} onStart={onStart} onConnect={onConnect} />
             </div>
           </div>
         </nav>
