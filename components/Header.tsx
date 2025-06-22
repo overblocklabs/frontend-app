@@ -6,7 +6,7 @@ import Link from 'next/link';
 import useKeyStore from '../store/key.store';
 
 interface HeaderProps {
-  onConnect: (publicKey: string) => void;
+  onConnect: () => void;
   onStart?: () => void;
   onError?: () => void;
 }

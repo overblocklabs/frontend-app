@@ -19,7 +19,7 @@ import useKeyStore from '../../store/key.store';
 
 export default function Client() {
 
-  const {userPublicKey, setUserPublicKey} = useKeyStore()
+  const {userPublicKey} = useKeyStore()
 
   // Community Lottery Form State
   const [showCommunityForm, setShowCommunityForm] = useState(false);
@@ -99,8 +99,7 @@ export default function Client() {
   }, [getLotteries, getCompletedLotteries]);
 
   // Handle wallet connection
-  const handleWalletConnect = (address: string) => {
-    setUserPublicKey(address);
+  const handleWalletConnect = () => {
     setConnecting(false)
   };
 

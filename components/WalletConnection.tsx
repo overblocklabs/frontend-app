@@ -6,7 +6,7 @@ import usePasskey from "../hooks/passkey.hook";
 import useWallet from "../hooks/useWallet.hook";
 import useKeyStore from "../store/key.store";
 
-export default function WalletConnection({ onConnect, onStart, onError, useConnect = false }: { onConnect?: (publicKey: string) => void, onStart?: () => void, onError?: () => void, useConnect?: boolean }) {
+export default function WalletConnection({ onConnect, onStart, onError, useConnect = false }: { onConnect?: () => void, onStart?: () => void, onError?: () => void, useConnect?: boolean }) {
   // const [publicKey, setPublicKey] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,7 @@ const {userPublicKey, setUserPublicKey} = useKeyStore()
     if (!publicKey) {
       return
     }
-    onConnect?.(publicKey)
+    onConnect?.()
     setUserPublicKey(publicKey)
   }, [publicKey])
 
