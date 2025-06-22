@@ -554,7 +554,7 @@ export default function Client() {
                   ) : (
                     <div className="text-center py-8">
                       <p className="text-muted mb-4">You haven&apos;t entered any lotteries yet.</p>
-                      <a href="#active-lotteries" className="btn btn-primary">Browse Lotteries</a>
+                      <a href="#active-lotteries" className="btn btn-primary p-2">Browse Lotteries</a>
                     </div>
                   )}
                 </div>
