@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+[![Build](https://github.com/Akifcan/forwardie/actions/workflows/build.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/build.yml)
+[![CommitLint CI](https://github.com/Akifcan/forwardie/actions/workflows/commitlint.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/commitlint.yml)
+[![Format](https://github.com/Akifcan/forwardie/actions/workflows/format.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/format.yml)
+[![TypeCheck](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml/badge.svg)](https://github.com/Akifcan/forwardie/actions/workflows/type-check.yml)
 
-## Getting Started
+🧪 **Live Demo**: [https://lotellar.netlify.app](https://lotellar.netlify.app)
 
-First, run the development server:
+# Stellar Hack Pera
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<p float="left" align="center">
+  <img src="image.png" width="120" />
+  <img src="public/images/stellar-logo.svg" width="120" />
+  <img src="public/images/soroban.svg" width="120" />
+</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Lotellar – Decentralized Voting & Lottery System
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Summary
+Lotellar is a fully decentralized Web3 application built on the Stellar Soroban smart contract platform that enables trustless lotteries and transparent voting. Designed with transparency, user-friendliness, and accessibility in mind, Lotellar aims to democratize participation in public draws and polls using blockchain-native identity and randomness.
 
-## Learn More
+## 🔧 Key Features
+- 🎲 Lottery Mechanism: Provably fair lottery draws using on-chain pseudo-randomness via Soroban's vm::random, offering a VRF-like experience.
+- 🗳️ Voting System: Lightweight and anonymous voting modules ideal for DAOs, communities, and decentralized governance.
+- 🔐 Passkey Authentication: Uses modern Passkey/WebAuthn authentication to provide seamless, passwordless login tied to a user's device.
+- 🔗 Freighter Wallet Integration: Interact with Soroban smart contracts directly via Freighter for signing transactions.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tech Stack
+- Frontend: Next.js + TailwindCSS + TypeScript
+- Smart Contracts: Rust (Stellar Soroban)
+- Wallet & Signing: Freighter
+- Authentication: Passkey/Freighter
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📌 Use Cases
+- DAO decision-making (on-chain voting)
+- Transparent NFT/Token lotteries
+- Raffle giveaways for Web3 communities
+- Web3-native anonymous polling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌍 Vision
+Lotellar envisions a world where trustless random draws and governance are not exclusive to tech-savvy crypto users but accessible to everyone, everywhere — leveraging blockchain not as a barrier, but as an enabler of fairness and autonomy.
 
-## Deploy on Vercel
+## 👥 Team
+Lotellar was built by a 4-person team of developers and designers with a shared passion for decentralized systems, trustless infrastructure, and accessible crypto UX. We combined our strengths in smart contract development, frontend engineering, product design, and blockchain architecture to deliver a seamless Web3 experience.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Lotellar – Decentralized Voting & Lottery System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Summary
+Lotellar is a fully decentralized Web3 application built on the Stellar Soroban smart contract platform that enables trustless lotteries and transparent voting. Designed with transparency, user-friendliness, and accessibility in mind, Lotellar aims to democratize participation in public draws and polls using blockchain-native identity and randomness.
+
+## 🔧 Key Features
+- 🎲 Lottery Mechanism: Provably fair lottery draws using on-chain pseudo-randomness via Soroban's vm::random, offering a VRF-like experience.
+- 🗳️ Voting System: Lightweight and anonymous voting modules ideal for DAOs, communities, and decentralized governance.
+- 🔐 Passkey Authentication: Uses modern Passkey/WebAuthn authentication to provide seamless, passwordless login tied to a user's device.
+- 🔗 Freighter Wallet Integration: Interact with Soroban smart contracts directly via Freighter for signing transactions.
+
+## 🛠️ Tech Stack
+- Frontend: Next.js + TailwindCSS + TypeScript
+- Smart Contracts: Rust (Stellar Soroban)
+- Wallet & Signing: Freighter
+- Authentication: Passkey/Freighter
+
+## 📌 Use Cases
+- DAO decision-making (on-chain voting)
+- Transparent NFT/Token lotteries
+- Raffle giveaways for Web3 communities
+- Web3-native anonymous polling
+
+## 🌍 Vision
+Lotellar envisions a world where trustless random draws and governance are not exclusive to tech-savvy crypto users but accessible to everyone, everywhere — leveraging blockchain not as a barrier, but as an enabler of fairness and autonomy.
+
+## 👥 Team
+Lotellar was built by a 4-person team of developers and designers with a shared passion for decentralized systems, trustless infrastructure, and accessible crypto UX. We combined our strengths in smart contract development, frontend engineering, product design, and blockchain architecture to deliver a seamless Web3 experience.
+
+- **Overblocklabs Team**
