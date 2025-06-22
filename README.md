@@ -200,4 +200,26 @@ Lotellar envisions a world where trustless random draws and governance are not e
 ## 👥 Team
 Lotellar was built by a 4-person team of developers and designers with a shared passion for decentralized systems, trustless infrastructure, and accessible crypto UX. We combined our strengths in smart contract development, frontend engineering, product design, and blockchain architecture to deliver a seamless Web3 experience.
 
+Caner Yakupoğlu
+Software Engineer, Founder OverBlock
+10 years software development experience
+5 years in blockchain
+Running pos validators in cosmos based chains
+Mina Navigator Grant
+Yapı Kredi Bank Hackathon Winner
+https://www.linkedin.com/in/CanerYakupoglu
+
+Marsel Kerim Demir
+Business Development
+
+Akifcan Kara
+Software Developer
+5 years in software development
+
+Emin Karagöz
+Commumity creator
+Smart Contract Developer
+https://x.com/kaptan_web3
+
+
 - **Overblocklabs Team**
